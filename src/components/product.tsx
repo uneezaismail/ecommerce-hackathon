@@ -3,13 +3,7 @@ import React from 'react'
 
 
 
-const images = [
-    "/new-arrivals.png",
-    "/pdetail-1.png",
-    "/pdetail-2.png",
-    "/pdetail-3.png",
-    "/pdetail-4.png",
-  ];
+
 const Product = () => {
       <div className="w-[553px] flex flex-col-reverse lg:flex-row gap-4  lg:gap-x-4">
               {/* Thumbnails */}
