@@ -1,9 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
 
-
-
-
 const Product = () => {
       <div className="w-[553px] flex flex-col-reverse lg:flex-row gap-4  lg:gap-x-4">
               {/* Thumbnails */}

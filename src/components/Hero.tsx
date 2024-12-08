@@ -18,11 +18,10 @@ const Hero = () => {
         </div>
 
         {/* Image Section */}
-        <div className='relative w-[400px] h-[400px] sm:w-[450px] sm:h-[400px] md:h-[600px] md:w-[600px]  xl:w-[1000px] xl:h-[653px]'>
+        <div className='relative w-[350px] h-[350px] sm:w-[450px] sm:h-[400px] md:h-[600px] md:w-[600px]  xl:w-[1000px] xl:h-[653px]'>
           <Image
             src='/hero.png'
-            alt='hero-image'
-           
+            alt='hero-image'          
            fill 
       className='object-cover '
                      
