@@ -37,8 +37,8 @@ const Footer = () => {
     </div>
     <div className='flex flex-col gap-y-4 md:gap-y-6 lg:gap-y-12'>
                 <span className='text-gray-400'>Newletter</span>
-       <div className='flex items-center gap-x-3'>
-        <input type="email" placeholder='Enter Your Email Address' className='focus:ring-0 focus:outline-none border-b border-b-black p-1 md:w-full w-auto'/>
+       <div className='flex items-center gap-x-2 sm:gap-x-3'>
+        <input type="email" placeholder='Enter Your Email Address' className='focus:ring-0 focus:outline-none border-b border-b-black p-1 md:w-full w-[90%]'/>
         <button type='submit' className='font-medium border-b border-b-black p-1 [#877026]'>SUBSCRIBE</button>
        </div>
     </div>
