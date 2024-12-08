@@ -12,6 +12,8 @@ export default {
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
+			  'custom-gray': '#9F9F9F',
+			  'custom-light-gray': '#FAF4F4',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
@@ -55,7 +57,10 @@ export default {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+		  fontFamily: {
+			poppins: ['var(--font-poppins)', 'sans-serif'], // Use the CSS variable
+		  },
   	}
   },
   plugins: [require("tailwindcss-animate")],

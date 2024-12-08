@@ -55,7 +55,9 @@ The purpose of this project is to create a visually appealing and user-friendly 
 
 1. **Access the Live Website**  
    Visit the deployed e-commerce website using the following link:  
-   [Live Website](https://your-deployment-domain.com) 
+   [Live Website]
+   
+   https://ecommerce-hackathon-five.vercel.app/ 
 
 
 
@@ -63,8 +65,8 @@ The purpose of this project is to create a visually appealing and user-friendly 
    If you want to explore the project locally or contribute to its development, follow these steps:  
    - Clone the repository:
      ```bash
-     git clone https://github.com/your-username/your-repo-name.git
-     cd your-repo-name
+     git clone https://github.com/uneezaismail/ecommerce-hackathon.git
+     cd ecommerce-hackathon
      ```
    - Install dependencies:
      ```bash
