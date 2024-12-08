@@ -3,7 +3,7 @@ import React from 'react'
 const Billing = () => {
   return (
  
-    <div className='w-full mx-4 sm:w-[300px] sm:mx-auto lg:w-[508px] h-fit xl:w-[608px] py-9 lg:pb-14 lg:px-16 space-y-9'>
+    <div className='w-[90%] mx-4 sm:w-[300px] sm:mx-auto lg:w-[508px] h-fit xl:w-[608px] py-9 lg:pb-14 lg:px-16 space-y-9'>
   <div>
     <h2 className='text-4xl font-semibold'>Billing Details</h2>
   </div>
