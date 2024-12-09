@@ -12,7 +12,7 @@ const CartItem = () => {
       </div>
       <hr className="w-full border-gray-300" />
 
-      {/* Product Info in Flex Row */}
+    
       <div className="flex flex-col md:flex-row items-center gap-6">
         {/* Image Section */}
         <div className="w-[108px] h-[108px] bg-[#FBEBB5] rounded-xl overflow-hidden">

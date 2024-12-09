@@ -6,20 +6,20 @@ import { HiMiniMagnifyingGlass } from 'react-icons/hi2';
 
 const blogs = [
   {
-    image: '/ourblog-2.avif', // Replace with your image paths
+    image: '/ourblog-2.avif', 
     category: 'Wood',
     title: 'Going all-in with millennial design',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
   },
   {
-    image: '/blogimage-1.avif', // Replace with your image paths
+    image: '/blogimage-1.avif',
     category: 'Handmade',
     title: 'Exploring new ways of decorating',
 
   },
   {
-    image: '/blogimage-2.avif', // Replace with your image paths
+    image: '/blogimage-2.avif', 
     category: 'Handmade',
     title: 'Handmade pieces that took time to make',
 

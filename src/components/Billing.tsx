@@ -8,7 +8,7 @@ const Billing = () => {
     <h2 className='text-4xl font-semibold'>Billing Details</h2>
   </div>
   <form className="space-y-6 md:space-y-9 md:w-[470px]">
-    {/* First Name and Last Name */}
+    
     <div className="flex items-center gap-x-7">
       <div className="space-y-5">
         <label className="block text-black">First Name</label>

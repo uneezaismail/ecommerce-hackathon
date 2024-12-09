@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-// Define a type for the component props
+
 interface NavImageProps {
   heading: string;
   path: string;
