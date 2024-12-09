@@ -241,7 +241,7 @@ const ProductData: React.FC = () => {
       
       {/* Cart Modal */}
       {showCart && (
-        <div className="fixed top-0 right-4 w-[471px] h-[746px] bg-white shadow-lg border rounded-lg z-50">
+        <div className="fixed top-0 right-4 lg:w-[471px] md:h-[746px] bg-white shadow-lg border rounded-lg z-50">
           <div className="relative">
             {/* Close Button */}
             <button

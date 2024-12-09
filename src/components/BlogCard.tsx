@@ -18,11 +18,11 @@ const BlogCard: React.FC<BlogCardProps> = ({ image, category, title}) => {
       
       {/* Meta Info */}
       <div className="flex items-center gap-4 mt-4 text-base  text-gray-400">
-       <div className='flex items-center gap-x-2'><span><ImUser size={25}/></span><span>Admin</span></div> 
+       <div className='flex items-center gap-x-2 sm:text-base text-xs'><span><ImUser size={25}/></span><span>Admin</span></div> 
         <span> | </span>
-        <div className='flex items-center gap-x-2'><span><IoCalendarClear size={25}/></span><span>14 Oct 2022</span></div> 
+        <div className='flex items-center gap-x-2 sm:text-base text-xs'><span><IoCalendarClear size={25}/></span><span>14 Oct 2022</span></div> 
         <span> | </span>
-        <div className='flex items-center gap-x-2'><span><FaTag size={25}/></span><span>{category}</span></div> 
+        <div className='flex items-center gap-x-2 sm:text-base text-xs'><span><FaTag size={25}/></span><span>{category}</span></div> 
       </div>
       
       {/* Blog Title */}
