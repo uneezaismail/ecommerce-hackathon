@@ -14,12 +14,12 @@ const Card: React.FC<CardProps> = ({ data }) => {
     <div className="md:w-[372px] lg:w-[250px] xl:w-[287px] h-[372px] space-y-4">
       {/* Image Container */}
       <div className="w-full h-[250px] flex items-center justify-center bg-transparent">
-        <div className="w-full h-[220px] relative">
+        <div className=" w-full h-[220px] relative">
           <Image
             src={data.img}
             alt={data.heading}
             layout="fill"
-            objectFit="cover"
+            objectFit="contain"
             className="rounded-lg"
           />
         </div>
@@ -28,7 +28,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
       {/* Card Text */}
       <div className="space-y-3">
         <h3 className="font-medium text-base">{data.heading}</h3>
-        <p className="text-2xl font-medium">{data.price}</p>
+        <p className="text-lg sm:text-2xl font-medium">{data.price}</p>
       </div>
     </div>
   );

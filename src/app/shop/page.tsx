@@ -49,12 +49,12 @@ const Shop = () => {
         ))}
       </div>
 
-<div className='flex items-center gap-x-9 mx-auto my-16'>
-<button className='px-8 py-6 bg-[#FBEBB5] rounded-xl'>1</button>
-<button className='px-8 py-6 bg-[#FFF9E5] rounded-xl'>2</button>
-<button className='px-8 py-6 bg-[#FFF9E5] rounded-xl'>3</button>
-<button className='px-8 py-6 bg-[#FFF9E5] rounded-xl'>Next</button>
-</div>
+      <div className="flex w-fit items-center gap-x-3 md:gap-x-9 mx-auto my-16">
+    <button className="px-6 md:px-8 py-4 md:py-6 bg-[#FBEBB5] rounded-xl">1</button>
+    <button className="px-6 md:px-8 py-4 md:py-6 bg-[#FFF9E5] rounded-xl">2</button>
+    <button className="px-6 md:px-8 py-4 md:py-6 bg-[#FFF9E5] rounded-xl">3</button>
+    <button className="px-6 md:px-8 py-4 md:py-6 bg-[#FFF9E5] rounded-xl">Next</button>
+  </div>
       </div>
    <Delivery/>
    </section>

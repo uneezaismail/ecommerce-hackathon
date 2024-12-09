@@ -2,8 +2,8 @@ import React from 'react'
 
 const Footer = () => {
   return (
-   <footer className='w-full px-4 lg:mx-0 h-fit py-6 md:py-0 md:h-[450px] lg:h-[500px] xl:h-[555px] lg:content-center'>
-    <div className='flex mx-auto h-[95%] lg:justify-center flex-col gap-y-6 lg:gap-y-8 xl:gap-y-12  max-w-[1240px] '>
+   <footer className='w-full px-4 lg:mx-0 h-fit py-6 md:py-8 lg:content-center'>
+    <div className='flex mx-auto h-[95%] lg:justify-center flex-col gap-y-6 lg:gap-y-8 xl:gap-y-10  max-w-[1240px] '>
     <div className='flex justify-between flex-col md:flex-row gap-y-6  md:gap-x-16 xl:gap-x-32 w-full'>
     <div className='flex flex-col md:items-center md:justify-center '>
         <h6 className=' text-gray-400'>
@@ -43,7 +43,7 @@ const Footer = () => {
        </div>
     </div>
     </div>
-    <hr className='border border-black'/>
+    <hr />
     <div className='w-full text-center md:text-start'>
 <p>2022 Meubel House. All rights reverved</p>
     </div>
