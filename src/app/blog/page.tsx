@@ -1,5 +1,6 @@
 import BlogCard from '@/components/BlogCard';
 import Delivery from '@/components/ourDelivery';
+import Image from 'next/image';
 import React from 'react';
 import { HiMiniMagnifyingGlass } from 'react-icons/hi2';
 
@@ -44,19 +45,19 @@ const recentpost = [{
 },
 ]
 
-const HomePage: React.FC = () => {
+const BlogPage: React.FC = () => {
   return (
-    <section className=" lg:ml-4 mx-auto xl:pl-0 mt-16 md:mt-24 bg-red-500">
+    <section className=" lg:ml-4 mx-auto xl:pl-0 mt-16 md:mt-24 ">
   <div className="flex flex-col md:flex-row max-w-7xl mx-auto space-y-8 md:space-y-0">
     {/* Left Section */}
-    <div className="flex-1 mx-auto bg-purple-400 space-y-8 items-center justify-center">
+    <div className="flex-1 mx-auto  space-y-8 items-center justify-center">
       {blogs.map((blog, index) => (
         <BlogCard key={index} {...blog} />
       ))}
     </div>
 
     {/* Right Section */}
-    <div className="hidden bg-purple-400 lg:block space-y-10">
+    <div className="hidden lg:block space-y-10">
       <div className="px-2 xl:px-10 xl:w-full h-[537px] py-4 space-y-8">
         <div className="relative w-full max-w-md">
           {/* Input Field */}
@@ -79,13 +80,13 @@ const HomePage: React.FC = () => {
       </div>
 
       {/* Recent Posts */}
-      <div className="hidden bg-yellow-500 lg:flex w-full items-center flex-col">
+      <div className="hidden lg:flex w-full items-center flex-col">
         <ul className="flex w-[70%] flex-wrap gap-4 xl:gap-6">
           <h3 className="text-2xl w-full font-medium mb-4">Recent Posts</h3>
           {recentpost.map((blog, index) => (
             <li key={index} className="flex items-center gap-4 w-full sm:w-auto sm:flex-none">
               {/* Image */}
-              <img src={blog.img} alt={blog.name} className="w-[80px] h-[80px] rounded-xl object-cover" />
+              <Image src={blog.img} alt={blog.name} width={80} height={80} className="w-[80px] h-[80px] rounded-xl object-cover" />
               {/* Blog Details */}
               <div className="flex flex-col w-[50%]">
                 <h4 className="text-gray-800 text-sm font-medium">{blog.name}</h4>
@@ -111,4 +112,4 @@ const HomePage: React.FC = () => {
   );
 };
 
-export default HomePage;
+export default BlogPage;

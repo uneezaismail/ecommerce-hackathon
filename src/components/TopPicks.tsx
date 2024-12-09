@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "./Card";
 import { topPick } from "./data";
+import Link from "next/link";
 
 const TopPicks = () => {
   return (
@@ -29,9 +30,9 @@ const TopPicks = () => {
 
       {/* View More Button */}
       <div className="flex items-center justify-center">
-        <button className="font-poppins text-xl font-medium border-b-2 border-black pb-2 md:pb-5">
+       <Link href={"/productdetails"}> <button className="font-poppins text-xl font-medium border-b-2 border-black pb-2 md:pb-5">
           View More
-        </button>
+        </button></Link>
       </div>
     </section>
   );

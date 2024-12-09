@@ -142,8 +142,8 @@ const ProductData: React.FC = () => {
   return (
     <>
       {/* Main Product Details */}
-      <div className="space-y-10 md:space-y-16">
-        <div className="w-[330px] md:w-[500px] xl:w-[606px] sm:p-4 space-y-4">
+      <div className="space-y-10  md:space-y-16">
+        <div className="w-[350px] px-4 md:w-[500px] xl:w-[606px] sm:p-4 space-y-4">
           <h1 className="text-4xl mb-2">Asgaard Sofa</h1>
           <p className="text-2xl text-gray-500 font-medium">Rs. 250,000.00</p>
           <div className="flex items-center gap-x-4 gap-y-6">
@@ -204,8 +204,41 @@ const ProductData: React.FC = () => {
             </button>
           </div>
         </div>
+        <div className="space-y-6 md:space-y-14">
+      <hr />
+<div className="flex flex-col justify-between gap-y-3">
+        <div className="flex items-center gap-x-16">
+          <span>SKU</span>
+          <span>:SS001</span>
+        </div>
+        <div className="flex items-center gap-x-16">
+          <span>Category</span>
+          <span>:Sofas</span>
+        </div>
+        <div className="flex items-center gap-x-16">
+          <span>Tags</span>
+          <span>:Sofa, Chair, Home, Shop</span>
+        </div>
+        <div className="flex items-center gap-x-16">
+          <span>Share</span>
+          <span className="flex items-center gap-x-6">
+            :{" "}
+            <span>
+              <FaFacebook size={25}/>
+            </span>{" "}
+            <span>
+              <IoLogoLinkedin size={25}/>
+            </span>{" "}
+            <span>
+              <AiFillTwitterCircle size={25}/>
+            </span>
+          </span>
+        </div>
+        </div>
+      </div>
       </div>
 
+      
       {/* Cart Modal */}
       {showCart && (
         <div className="fixed top-0 right-4 w-[471px] h-[746px] bg-white shadow-lg border rounded-lg z-50">

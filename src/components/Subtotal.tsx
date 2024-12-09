@@ -3,7 +3,7 @@ import React from 'react'
 const Subtotal = () => {
   return (
     
-    <div className='w-[90%] mx:2 md:bg-pink-200 md:mx-auto sm:w-[400px] md:w-[500px] mx-auto lg:w-[508px] h-fit xl:w-[608px] py-9 lg:pb-14 lg:py-20 lg:px-9 space-y-9'>
+    <div className='w-[90%] mx:2 md:mx-auto sm:w-[400px] md:w-[500px] mx-auto lg:w-[508px] h-fit xl:w-[608px] py-9 lg:pb-14 lg:py-20 lg:px-9 space-y-9'>
         <div className=' xl:w-[533px] space-y-9'>
             <div className='flex flex-col gap-y-5'>
                 <div className='flex items-center justify-between'><span className='text-2xl font-medium'>Product</span><span className='text-2xl font-medium'>Subtotal</span></div>

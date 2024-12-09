@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import { FaTag } from 'react-icons/fa';
 import { ImUser } from 'react-icons/im';
@@ -13,7 +14,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ image, category, title}) => {
   return (
     <div className="bg-white w-[350px] sm:w-[450px] md:w-[700px] lg:w-[700px] xl:w-[820px] rounded-lg space-y-4">
       {/* Blog Image */}
-      <img src={image} alt={title} className="rounded-xl w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover" />
+      <Image src={image} alt={title} width={350} height={300}  className="rounded-xl w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover" />
       
       {/* Meta Info */}
       <div className="flex items-center gap-4 mt-4 text-base  text-gray-400">
