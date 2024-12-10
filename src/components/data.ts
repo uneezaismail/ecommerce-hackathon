@@ -68,19 +68,19 @@ export const allData = [{
       price: "Rs. 258,800.00",
        
   },{
-    img: "/shop/shop-10.png",
+    img: "/new-arrivals.png",
       heading: "Asgaard sofa",
       price: "Rs. 250,000.00",
        
   },
   {
-    img: "/new-arrivals.png",
+    img: "/shop/shop-9.png",
       heading: "Maya sofa three seater",
       price: "Rs. 115,000.00",
        
   },
   {
-    img: "/shop/shop-9.png ",
+    img: "/shop/shop-10.png ",
       heading: "Outdoor sofa set",
       price: "Rs. 244,000.00",
        
@@ -92,15 +92,3 @@ export const topPick = allData.filter((data) => data.category === "pick");
 
 
 
-
-// {
-//     img: "/home-table.png",
-//       heading: "Maya sofa three seater",
-//       price: "Rs. 115,000.00",
-       
-//   },{
-//     img: "/shop/shop-12.png",
-//       heading: "Outdoor sofa set",
-//       price: "Rs. 244,000.00",
-       
-//   },

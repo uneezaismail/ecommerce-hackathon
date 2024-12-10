@@ -49,7 +49,7 @@ const Header = () => {
       <ul className="hidden md:flex items-center gap-x-16">
         {menuItems.map((item, index) => (
           <Link key={index} href={item.link}>
-            <li className="font-medium font-poppins cursor-pointer">{item.name}</li>
+            <li className="font-medium font-poppins hover:border-b hover:text-[#75601c] hover:border-b-black cursor-pointer">{item.name}</li>
           </Link>
         ))}
       </ul>
@@ -58,7 +58,7 @@ const Header = () => {
       <ul className="flex items-center gap-x-4 sm:gap-x-6">
         {icons.map((item, index) => (
           <Link key={index} href={item.link}>
-            <li className="p-1 font-poppins cursor-pointer">{item.icon}</li>
+            <li className="p-1 font-poppins cursor-pointer hover:text-[#75601c]">{item.icon}</li>
           </Link>
         ))}
       </ul>

@@ -7,7 +7,7 @@ import { GoClock } from 'react-icons/go'
 const Blog = () => {
  const blogImages = ["/ourblog-1.avif","/ourblog-2.avif","/ourblog-3.avif"]
   return (
-    <section className="w-full h-fit py-14 px-2 sm:px-6 md:px-8 lg:px-[20px] xl:px-[50px] space-y-16 ">
+    <section className="w-full h-fit px-2 lg:px-0 py-14 flex flex-col items-center space-y-16 ">
     {/* Heading Section */}
     <div className="flex flex-col items-center gap-y-3 text-center">
       <h4 className="text-4xl font-medium">Our Blogs</h4>
@@ -18,8 +18,8 @@ const Blog = () => {
     <div className="grid mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-4 md:gap-6 xl-gap-8">
     {blogImages.map((img,index)=>(
     <div key={index} className='mx-auto md:mx-0 h-[450px] w-[300px] lg:h-[555px] lg:w-[330px] xl:w-[393px] flex flex-col items-center gap-y-6 md:gap-y-8'>
-        <div className='relative h-[350px] lg:h-[300px] xl:h-[393px] w-full rounded-lg'>
-            <Image src={img} alt='blog-1' fill objectFit='cover' className='rounded-lg'/>
+        <div className='relative h-[350px] lg:h-[300px] xl:h-[393px] w-full rounded-[10px]'>
+            <Image src={img} alt='blog-1' fill objectFit='cover' className='rounded-[10px]'/>
         </div>
         <div className='flex items-center flex-col gap-y-4'>
           <h4 className='text-xl font-poppins'>Going all-in with millennial design</h4>

@@ -3,11 +3,11 @@ import React from "react";
 
 const NewArrivals = () => {
   return (
-    <section className="relative flex md:flex-row flex-col gap-x-8 lg:gap-x-12 xl:gap-x-16 py-10 md:py-6 w-full h-fit lg:max-h-[639px] bg-[#FFF9E6] items-center">
+    <section className="relative flex md:flex-row flex-col  gap-x-8 lg:gap-x-12 xl:gap-x-16 py-10 md:py-6 w-full h-fit lg:max-h-[639px] bg-[#FFF9E6] items-center">
       {/* Image Section */}
 
       <Image  src="/new-arrivals.png"
-          alt="New Arrivals" width={700} height={800} className=" lg:w-[65%] xl:w-[70%] h-full xl:h-[630px]">
+          alt="New Arrivals" width={700} height={800} className=" md:w-[60%] lg:w-[65%] xl:w-[70%] h-full xl:h-[630px]">
         
         </Image>
 

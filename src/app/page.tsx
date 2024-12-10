@@ -8,7 +8,7 @@ import TopPicks from "@/components/TopPicks";
 
 export default function Home() {
   return (
-   <main className="">
+   <main className="flex flex-col">
     <Hero/>
 <Table/>
 <TopPicks/>

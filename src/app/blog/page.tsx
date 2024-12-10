@@ -1,4 +1,5 @@
 import BlogCard from '@/components/BlogCard';
+import NavImage from '@/components/NavImage';
 import Delivery from '@/components/ourDelivery';
 import Image from 'next/image';
 import React from 'react';
@@ -47,10 +48,11 @@ const recentpost = [{
 
 const BlogPage: React.FC = () => {
   return (
-    <section className=" lg:ml-4 mx-auto xl:pl-0 mt-16 md:mt-24 ">
+    <section className="space-y-10 lg:space-y-28">
+      <NavImage heading={"Blog"} path={"Home"} currentPage={"Blog"}/>
   <div className="flex flex-col md:flex-row max-w-7xl mx-auto space-y-8 md:space-y-0">
     {/* Left Section */}
-    <div className="flex-1 mx-auto  space-y-8 items-center justify-center">
+    <div className="flex-1 flex flex-col mx-auto   space-y-8 items-center justify-center">
       {blogs.map((blog, index) => (
         <BlogCard key={index} {...blog} />
       ))}

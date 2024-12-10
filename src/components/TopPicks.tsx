@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const TopPicks = () => {
   return (
-    <section className="py-14 px-2 sm:px-6 md:px-8 lg:px-[20px] xl:px-[100px] space-y-16 lg:w-fit  bg-white">
+    <section className="py-14 px-2 md:px-0  space-y-16 flex flex-col items-center  bg-white">
       {/* Heading Section */}
       <div className="flex flex-col items-center gap-y-3 text-center">
         <h4 className="text-4xl font-medium font-poppins">Top Picks For You</h4>

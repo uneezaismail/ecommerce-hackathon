@@ -36,7 +36,7 @@ const Shop = () => {
  <div></div>
       </div>
 
-     <div className="grid mx-auto grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 xl:gap-x-8">
+     <div className="grid mx-auto px-2 grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 xl:gap-x-8">
          {allData.map((item, index) => (
           <Card
             key={index}
