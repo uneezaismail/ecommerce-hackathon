@@ -50,17 +50,17 @@ const BlogPage: React.FC = () => {
   return (
     <section className="space-y-10 lg:space-y-28">
       <NavImage heading={"Blog"} path={"Home"} currentPage={"Blog"}/>
-  <div className="flex flex-col md:flex-row max-w-7xl mx-auto space-y-8 md:space-y-0">
+  <div className="flex flex-col w-full lg:flex-row max-w-7xl mx-auto space-y-8 md:space-y-0">
     {/* Left Section */}
-    <div className="flex-1 flex flex-col mx-auto   space-y-8 items-center justify-center">
+    <div className="flex-1 flex flex-col  mx-auto space-y-20  md:space-y-16 items-center justify-center">
       {blogs.map((blog, index) => (
         <BlogCard key={index} {...blog} />
       ))}
     </div>
 
     {/* Right Section */}
-    <div className="hidden lg:block space-y-10">
-      <div className="px-2 xl:px-10 xl:w-full h-[537px] py-4 space-y-8">
+    <div className="space-y-10">
+      <div className="hidden lg:block px-2 xl:px-10 xl:w-full h-[537px] py-4 space-y-8">
         <div className="relative w-full max-w-md">
           {/* Input Field */}
           <input
@@ -82,16 +82,16 @@ const BlogPage: React.FC = () => {
       </div>
 
       {/* Recent Posts */}
-      <div className="hidden lg:flex w-full items-center flex-col">
-        <ul className="flex w-[70%] flex-wrap gap-4 xl:gap-6">
+      <div className=" flex px-2 w-full items-center flex-col">
+        <ul className="flex w-full md:max-w-64 flex-wrap gap-4 xl:gap-6">
           <h3 className="text-2xl w-full font-medium mb-4">Recent Posts</h3>
           {recentpost.map((blog, index) => (
-            <li key={index} className="flex items-center gap-4 w-full sm:w-auto sm:flex-none">
+            <li key={index} className=" max-h-28 overflow-hidden flex items-center gap-4 w-full md:max-w-64 md:w-auto sm:flex-none">
               {/* Image */}
-              <Image src={blog.img} alt={blog.name} width={80} height={80} className="w-[80px] h-[80px] rounded-xl object-cover" />
+              <Image src={blog.img} alt={blog.name} width={80} height={80} className=" w-32 h-auto md:w-[80px] md:h-[80px] rounded-xl object-cover" />
               {/* Blog Details */}
               <div className="flex flex-col w-[50%]">
-                <h4 className="text-gray-800 text-sm font-medium">{blog.name}</h4>
+                <h4 className="text-gray-800 text-base md:text-sm font-medium">{blog.name}</h4>
                 <span className="text-gray-400">03 Aug 2022</span>
               </div>
             </li>
@@ -115,3 +115,4 @@ const BlogPage: React.FC = () => {
 };
 
 export default BlogPage;
+

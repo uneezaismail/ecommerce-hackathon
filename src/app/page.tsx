@@ -15,8 +15,6 @@ export default function Home() {
 <NewArrivals/>
 <Blog/>
 <HomeContact/>
-
-{/* <Product/> */}
    </main>
   );
 }

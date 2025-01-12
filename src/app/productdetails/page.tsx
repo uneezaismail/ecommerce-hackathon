@@ -7,7 +7,7 @@ import React from 'react'
 const ProductDetails = () => {
   return (
     <section className='space-y-12'>
-    <div className="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div className="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-0">
     <Product
      />
     <ProductData />

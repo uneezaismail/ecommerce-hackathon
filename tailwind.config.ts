@@ -59,7 +59,11 @@ export default {
   			sm: 'calc(var(--radius) - 4px)'
   		},
 		  fontFamily: {
-			poppins: ['var(--font-poppins)', 'sans-serif'], // Use the CSS variable
+			poppins: ['var(--font-poppins)', 'sans-serif'], 
+			playfair: [
+				'var(--font-playfair)',
+				'serif'
+			]
 		  },
   	}
   },

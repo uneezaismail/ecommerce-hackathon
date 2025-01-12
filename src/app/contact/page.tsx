@@ -11,11 +11,13 @@ const Contact = () => {
       <NavImage heading={"Contact"} path={"Home"} currentPage={"Contact"}/>
       <div className='flex flex-col gap-y-2 items-center'>
         <h2 className='text-3xl md:text-4xl font-semibold'>Get In Touch With Us</h2>
-        <p className='text-gray-400 w-[95%] sm:w-[70%] lg:w-[50%] text-center'>For More Information About Our Product & Services. Please Feel Free To Drop Us An Email. Our Staff Always Be There To Help You Out. Do Not Hesitate!</p>
+        <p className='text-gray-500 w-[95%] sm:w-[70%] lg:w-[50%] text-center'>For More Information About Our Product & Services. Please Feel Free To Drop Us An Email. Our Staff Always Be There To Help You Out. Do Not Hesitate!</p>
       </div>
 
-<div className='md:justify-between  mx-auto lg:gap-x-8 w-fit xl:justify-center gap-y-10 md:gap-y-16 my-14 flex flex-col lg:flex-row'>
-<div className='w-full sm:w-[400px] md:w-[500px] lg:w-[393px]  px-12 py-10 space-y-10'>
+
+<div className='md:justify-between  mx-auto lg:gap-x-8 w-fit xl:justify-center gap-y-10 md:gap-y-16 my-14 flex flex-col-reverse lg:flex-row'>
+{/* contact address  */}
+<div className='w-full sm:w-[500px] md:w-[500px] lg:w-[393px]  px-12 py-10 space-y-10'>
       <div className='flex gap-x-6'>
         <span><IoLocation size={30}/></span>
         <div className='flex flex-col'> <h4 className=' text-2xl font-medium'>Address</h4>
@@ -40,39 +42,39 @@ const Contact = () => {
       </div>
       </div>
 
-      
+      {/* contact form  */}
 <div className='w-[90%]  mx-4 sm:w-[300px] md:w-[600px] sm:mx-auto  h-fit lg:w-[635px] py-9 lg:pb-14 lg:px-16 space-y-9'>
 <form className="space-y-6 md:space-y-9 md:w-[531px]">
-<div className="space-y-5">
-      <label className="block text-black">Your Name</label>
+<div className="space-y-2 md:space-y-5">
+      <label className="font-medium text-black">Your Name</label>
       <input
         type="text"
-        className="w-full border-2 border-gray-400 rounded-[6px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
+        className="w-full border border-gray-500 rounded-[10px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
       />
     </div>
-<div className="space-y-5">
-      <label className="block text-black">Email Address</label>
+<div className="space-y-2 md:space-y-5">
+      <label className="font-medium text-black">Email Address</label>
       <input
         type="text"
-        className="w-full border-2 border-gray-400 rounded-[6px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
+        className="w-full border border-gray-500 rounded-[10px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
       />
     </div>
-<div className="space-y-5">
-      <label className="block text-black">Subject</label>
+<div className="space-y-2 md:space-y-5">
+      <label className="font-medium text-black">Subject</label>
       <input
         type="text"
-        className="w-full border-2 border-gray-400 rounded-[6px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
+        className="w-full border border-gray-500 rounded-[10px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
       />
     </div>
-<div className="space-y-5">
-      <label className="block text-black">Message</label>
+<div className="space-y-2 md:space-y-5">
+      <label className="font-medium text-black">Message</label>
       <textarea
         
-        className="w-full border-2 border-gray-400 rounded-[6px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
+        className="w-full border border-gray-500 rounded-[10px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
       />
     </div>
     <div>
-      <button type='submit' className='px-10 md:px-20 py-3 border border-black rounded-2xl'>Submit</button>
+      <button type='submit' className='px-10 md:px-20 py-3 border border-black hover:bg-black hover:text-white rounded-2xl'>Submit</button>
     </div>
 </form>
       </div>
@@ -85,3 +87,7 @@ const Contact = () => {
 }
 
 export default Contact
+
+
+
+
