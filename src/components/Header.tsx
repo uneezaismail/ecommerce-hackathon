@@ -40,14 +40,14 @@ const Header = () => {
   const backgroundColor =
   isScrolled || pathname !== "/"
     ? "bg-white border-b"
-    : "bg-[#FBEBB5]";
+    : "bg-white";
 
 
 
   const menuItems = [
     { name: "Home", link: "/" },
     { name: "Shop", link: "/shop" },
-    { name: "About", link: "/productdetails" },
+    { name: "About", link: "/Product" },
     { name: "Contact", link: "/contact" },
   ];
 
@@ -66,7 +66,7 @@ const Header = () => {
           <Link href="/" className="hidden lg:flex items-center">
           <Image src={"/meubal.png"} alt="logo" width={50} height={30} className="md:w-16 object-cover md:h-16"/> 
             <h1 className="text-[26px] font-semibold font-playfair">
-            SITSTYLE
+            Oak&Teak
             </h1>
           </Link>
         </div>
@@ -74,7 +74,7 @@ const Header = () => {
         <Link href="/" className="flex lg:hidden items-center">
           <Image src={"/meubal.png"} alt="logo" width={50} height={50} className="md:w-16 object-cover md:h-16"/> 
             <h1 className="text-2xl font-semibold  font-playfair ">
-          SITSTYLE
+            Oak&Teak
             </h1>
           </Link>
 

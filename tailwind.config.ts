@@ -14,6 +14,7 @@ export default {
   			foreground: 'hsl(var(--foreground))',
 			  'custom-gray': '#9F9F9F',
 			  'custom-light-gray': '#FAF4F4',
+			  'custom-green' : '#103A3A',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'

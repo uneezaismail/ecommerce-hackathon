@@ -10,8 +10,8 @@ const Contact = () => {
    <section className='space-y-10 lg:space-y-28'>
       <NavImage heading={"Contact"} path={"Home"} currentPage={"Contact"}/>
       <div className='flex flex-col gap-y-2 items-center'>
-        <h2 className='text-3xl md:text-4xl font-semibold'>Get In Touch With Us</h2>
-        <p className='text-gray-500 w-[95%] sm:w-[70%] lg:w-[50%] text-center'>For More Information About Our Product & Services. Please Feel Free To Drop Us An Email. Our Staff Always Be There To Help You Out. Do Not Hesitate!</p>
+        <h2 className='text-3xl md:text-4xl font-semibold text-custom-green'>Get In Touch With Us</h2>
+        <p className='text-gray-600 w-[95%] sm:w-[70%] lg:w-[50%] text-center'>For More Information About Our Product & Services. Please Feel Free To Drop Us An Email. Our Staff Always Be There To Help You Out. Do Not Hesitate!</p>
       </div>
 
 
@@ -49,32 +49,32 @@ const Contact = () => {
       <label className="font-medium text-black">Your Name</label>
       <input
         type="text"
-        className="w-full border border-gray-500 rounded-[10px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
+        className="w-full border border-gray-500 rounded h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
       />
     </div>
 <div className="space-y-2 md:space-y-5">
       <label className="font-medium text-black">Email Address</label>
       <input
         type="text"
-        className="w-full border border-gray-500 rounded-[10px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
+        className="w-full border border-gray-500 rounded h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
       />
     </div>
 <div className="space-y-2 md:space-y-5">
       <label className="font-medium text-black">Subject</label>
       <input
         type="text"
-        className="w-full border border-gray-500 rounded-[10px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
+        className="w-full border border-gray-500 rounded h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
       />
     </div>
 <div className="space-y-2 md:space-y-5">
       <label className="font-medium text-black">Message</label>
       <textarea
         
-        className="w-full border border-gray-500 rounded-[10px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
+        className="w-full border border-gray-500 rounded h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
       />
     </div>
     <div>
-      <button type='submit' className='px-10 md:px-20 py-3 border border-black hover:bg-black hover:text-white rounded-2xl'>Submit</button>
+      <button type='submit' className='px-10 w-full md:px-20 py-3 border border-black  bg-custom-green hover:text-emerald-950 text-white  rounded'>Submit</button>
     </div>
 </form>
       </div>

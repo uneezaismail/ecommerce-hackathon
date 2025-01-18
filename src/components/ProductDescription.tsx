@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import React from 'react'
 
+
+
 const ProductDescription = () => {
   return (
    <section className='max-w-[1240px] mx-auto px-2 space-y-9'>

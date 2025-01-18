@@ -17,15 +17,15 @@ const Delivery = () => {
   ];
 
   return (
-    <section className="bg-custom-light-gray px-2 mt-10  flex items-center justify-center py-16 md:py-16 lg:py-24">
+    <section className="bg-[#F6F6F0] text-custom-green px-2 mt-10  flex items-center justify-center py-16 md:py-16 lg:py-24">
       <div className="w-fit mx-auto grid grid-cols-1  md:grid-cols-3 gap-11">
         {Deliverydetail.map((detail, index) => (
           <div
             key={index}
             className=" w-full max-w-[367px] text-center md:text-start  mx-auto space-y-2"
           >
-            <h4 className="font-medium text-2xl lg:text-3xl">{detail.heading}</h4>
-            <p className="text-gray-400 ">{detail.para}</p>
+            <h4 className="font-semibold text-2xl lg:text-3xl">{detail.heading}</h4>
+            <p className="">{detail.para}</p>
           </div>
         ))}
       </div>
