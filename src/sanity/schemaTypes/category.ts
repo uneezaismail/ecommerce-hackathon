@@ -1,6 +1,6 @@
 // schemas/category.js
 
-export default {
+export const category = {
     name: 'category',
     title: 'Category',
     type: 'document',

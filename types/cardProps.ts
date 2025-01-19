@@ -3,6 +3,7 @@ export interface CardProps {
     img: string; 
     hoverImg: string; 
     heading: string; 
+    inventory:number;
     price: number;
     discountPercentage?:number
     salePrice?: number;

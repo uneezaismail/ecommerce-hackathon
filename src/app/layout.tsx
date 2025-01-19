@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Header from "@/components/Header";
+import Header from "@/components/header/Header";
 import { Playfair_Display, Poppins } from 'next/font/google';
 import Footer from "@/components/Footer";
+import { CartProvider } from "./context/cartContext";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -43,8 +45,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable}  ${poppins.variable}  ${playfair.variable}  font-poppins antialiased `}
       >
+        <CartProvider>
         <Header/>
         {children}
+        <Toaster/>
+        </CartProvider>
         <Footer/>
       </body>
     </html>

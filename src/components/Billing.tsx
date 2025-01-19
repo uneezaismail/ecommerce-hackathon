@@ -1,218 +1,252 @@
-"use client"
-import React, { useState } from 'react';
 
-type Country = {
-  name: string;
-  code: string;
-};
+"use client";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import Subtotal from "./Subtotal";
 
-type Province = {
-  name: string;
-  code: string;
-};
+// Zod schema for form validation
+const schema = z.object({
+  firstName: z.string().min(1, "First Name is required"),
+  lastName: z.string().min(1, "Last Name is required"),
+  country: z.string().min(1, "Country is required"),
+  province: z.string().min(1, "Province is required"),
+  city: z.string().min(1, "City is required"),
+  area: z.string().min(1, "Area is required"),
+  streetAddress: z.string().min(1, "Street Address is required"),
+  zipCode: z.string().min(1, "ZIP Code is required"),
+  phone: z
+    .string()
+    .min(11, "Phone number must be 11 digits")
+    .regex(/^03\d{9}$/, "Phone number must start with 03 and be 11 digits long"),
+    email: z
+    .string()
+    .email("Invalid email address")
+    .regex(/^[a-zA-Z0-9._%+-]+@gmail\.com$/, "Email must be a Gmail address"),
+  additionalInfo: z.string().optional(),
+});
 
-type Provinces = {
-  [key: string]: Province[];
-};
+// Type inferred from Zod schema
+type BillingFormData = z.infer<typeof schema>;
 
 const Billing = () => {
-  const countries: Country[] = [
-    { name: 'India', code: 'india' },
-    { name: 'Pakistan', code: 'pakistan' },
-    { name: 'Bangladesh', code: 'bangladesh' },
-    { name: 'China', code: 'china' },
-  ];
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+  } = useForm<BillingFormData>({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      country: "",
+      province: "",
+      city: "",
+      area: "",
+      streetAddress: "",
+      zipCode: "",
+      phone: "",
+      email: "",
+      additionalInfo: "",
+    },
+  });
 
-  const provinces: Provinces = {
-    india: [
-      { name: 'Uttar Pradesh', code: 'india-uttarPradesh' },
-      { name: 'Maharashtra', code: 'india-maharashtra' },
-      { name: 'Karnataka', code: 'india-karnataka' },
-      { name: 'Tamil Nadu', code: 'india-tamilNadu' },
-    ],
-    pakistan: [
-      { name: 'Punjab', code: 'pakistan-punjab' },
-      { name: 'Sindh', code: 'pakistan-sindh' },
-      { name: 'Khyber Pakhtunkhwa', code: 'pakistan-khyberPakhtunkhwa' },
-      { name: 'Balochistan', code: 'pakistan-balochistan' },
-    ],
-    bangladesh: [
-      { name: 'Dhaka', code: 'bangladesh-dhaka' },
-      { name: 'Chittagong', code: 'bangladesh-chittagong' },
-      { name: 'Khulna', code: 'bangladesh-khulna' },
-      { name: 'Rajshahi', code: 'bangladesh-rajshahi' },
-    ],
-    china: [
-      { name: 'Beijing', code: 'china-beijing' },
-      { name: 'Shanghai', code: 'china-shanghai' },
-      { name: 'Guangdong', code: 'china-guangdong' },
-      { name: 'Zhejiang', code: 'china-zhejiang' },
-    ],
+  const onSubmit = (data: BillingFormData) => {
+    console.log(data);
   };
 
-  const [selectedCountry, setSelectedCountry] = useState<string>('');
-  const [selectedProvinces, setSelectedProvinces] = useState<Province[]>([]);
-
-  const handleCountryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const countryCode = event.target.value;
-    setSelectedCountry(countryCode);
-    // Update the provinces based on the selected country
-    if (countryCode && provinces[countryCode]) {
-      setSelectedProvinces(provinces[countryCode]);
-    } else {
-      setSelectedProvinces([]);
-    }
-  };
+  // Arrays for country, province, city, and Karachi areas
+  const countries = ['Pakistan'];
+  const provinces = ['Sindh'];
+  const cities = ['Karachi'];
+  const karachiAreas = ['Saddar', 'Korangi', 'Gulshan-e-Iqbal', 'Shahra-e-Faisal', 'DHA'];
 
   return (
-    <div className='max-w-screen-sm w-[90%] md:w-[500px] xl:w-[700px] mx-auto py-9 lg:pb-14 lg:px-16 space-y-11'>
-      <div className='max-w-[470px] mx-auto'>
-        <h2 className='text-4xl flex items-center justify-center md:justify-start font-semibold'>
-          Billing details
-        </h2>
-      </div>
-      <form className='space-y-6 md:space-y-9 max-w-[470px] mx-auto'>
-        <div className='flex flex-col sm:flex-row gap-7'>
-          <div className='space-y-2 md:space-y-5 w-full sm:w-[48%]'>
-            <label className='font-medium text-black'>First Name</label>
+    <section className="w-full">       
+        <form className='w-full md:justify-between gap-y-10 my-14 flex flex-col lg:flex-row mx-auto '
+         
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className="space-y-6 md:space-y-9 mx-6 max-w-[500px] ">
+          <div >
+          <h2 className="text-4xl flex items-center text-custom-green justify-center md:justify-start font-semibold">
+            Billing details
+          </h2>
+        </div>
+          <div className="flex flex-col sm:flex-row gap-7">
+            <div className="space-y-2 text-base md:text-lg w-full sm:w-[48%]">
+              <label className="font-medium text-black">First Name</label>
+              <input
+                {...register("firstName")}
+                type="text"
+                className="w-full border px-2 text-sm md:text-lg border-gray-500 rounded h-[3rem] md:h-[3.5rem] focus:outline-none focus:ring-0"
+              />
+              {errors.firstName && <p className="text-red-500">{errors.firstName.message}</p>}
+            </div>
+            <div className="space-y-2 text-base md:text-lg w-full sm:w-[48%]">
+              <label className=" font-medium text-black">Last Name</label>
+              <input
+                {...register("lastName")}
+                type="text"
+                className="w-full px-2 text-sm md:text-lg border border-gray-500 rounded h-[3rem] md:h-[3.5rem] focus:outline-none focus:ring-0"
+              />
+              {errors.lastName && <p className="text-red-500">{errors.lastName.message}</p>}
+            </div>
+          </div>
+
+          {/* Country / Region */}
+          <div className="space-y-2 text-base md:text-lg">
+            <label className="font-medium text-black">Country / Region</label>
+            <Select
+              onValueChange={(value) => setValue("country", value)}
+            >
+              <SelectTrigger className="w-full border px-2 text-sm md:text-lg border-gray-500 rounded h-[3rem] md:h-[3.5rem] focus:outline-none focus:ring-0">
+                <SelectValue placeholder="Select Country" />
+              </SelectTrigger>
+              <SelectContent className="bg-white z-30">
+                {countries.map((country) => (
+                  <SelectItem key={country} value={country}>
+                    {country}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            {errors.country && <p className="text-red-500">{errors.country.message}</p>}
+          </div>
+
+          {/* Province */}
+          <div className="space-y-2 text-base md:text-lg">
+            <label className="font-medium text-black">Province</label>
+            <Select
+              onValueChange={(value) => setValue("province", value)}
+            >
+              <SelectTrigger className="w-full px-2 text-sm md:text-lg border border-gray-500 rounded h-[3rem] md:h-[3.5rem] focus:outline-none focus:ring-0">
+                <SelectValue placeholder="Select Province" />
+              </SelectTrigger>
+              <SelectContent className="bg-white z-30">
+                {provinces.map((province) => (
+                  <SelectItem key={province} value={province}>
+                    {province}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            {errors.province && <p className="text-red-500">{errors.province.message}</p>}
+          </div>
+
+          {/* City */}
+          <div className="space-y-2 text-base md:text-lg">
+            <label className="font-medium text-black">City</label>
+            <Select
+              onValueChange={(value) => setValue("city", value)}
+            >
+              <SelectTrigger className="w-full px-2 text-sm md:text-lg border  border-gray-500 rounded h-[3rem] md:h-[3.5rem] focus:outline-none focus:ring-0">
+                <SelectValue placeholder="Select City" />
+              </SelectTrigger>
+              <SelectContent className="bg-white z-30">
+                {cities.map((city) => (
+                  <SelectItem key={city} value={city}>
+                    {city}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            {errors.city && <p className="text-red-500">{errors.city.message}</p>}
+          </div>
+
+          {/* Karachi Areas */}
+          <div className="space-y-2 text-base md:text-lg">
+            <label className="font-medium text-black">Town / Area</label>
+            <Select
+              onValueChange={(value) => setValue("area", value)}
+            >
+              <SelectTrigger className="w-full z-10 px-2 text-sm md:text-lg border border-gray-500 rounded h-[3rem] md:h-[3.5rem] focus:outline-none focus:ring-0">
+                <SelectValue placeholder="Select Area" />
+              </SelectTrigger>
+              <SelectContent className="bg-white z-30">
+                {karachiAreas.map((area) => (
+                  <SelectItem key={area} value={area}>
+                    {area}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            {errors.area && <p className="text-red-500">{errors.area.message}</p>}
+          </div>
+
+          {/* Street Address */}
+          <div className="space-y-2 text-base md:text-lg">
+            <label className="font-medium text-black">Street Address</label>
             <input
-              type='text'
-              required
-              className='w-full border px-2 text-sm md:text-xl border-gray-500 rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0'
+              {...register("streetAddress")}
+              type="text"
+              className="w-full px-2 text-sm md:text-lg border border-gray-500 rounded h-[3rem] md:h-[3.5rem] focus:outline-none focus:ring-0"
+            />
+            {errors.streetAddress && (
+              <p className="text-red-500">{errors.streetAddress.message}</p>
+            )}
+          </div>
+
+          {/* ZIP Code */}
+          <div className="space-y-2 text-base md:text-lg">
+            <label className="font-medium text-black">ZIP Code</label>
+            <input
+              {...register("zipCode")}
+              type="text"
+              className="w-full px-2 text-sm md:text-lg border border-gray-500 rounded h-[3rem] md:h-[3.5rem] focus:outline-none focus:ring-0"
+            />
+            {errors.zipCode && <p className="text-red-500">{errors.zipCode.message}</p>}
+          </div>
+
+          {/* Phone */}
+          <div className="space-y-2 text-base md:text-lg">
+            <label className="font-medium text-black">Phone</label>
+            <input
+              {...register("phone")}
+              type="text"
+              className="w-full px-2 text-sm md:text-lg border border-gray-500 rounded h-[3rem] md:h-[3.5rem] focus:outline-none focus:ring-0"
+            />
+            {errors.phone && <p className="text-red-500">{errors.phone.message}</p>}
+          </div>
+
+          {/* Email */}
+          <div className="space-y-2 text-base md:text-lg">
+            <label className="font-medium text-black">Email</label>
+            <input
+              {...register("email")}
+              type="text"
+              className="w-full px-2 text-sm md:text-lg border border-gray-500 rounded h-[3rem] md:h-[3.5rem] focus:outline-none focus:ring-0"
+            />
+            {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+          </div>
+
+          {/* Additional Info */}
+          <div className="space-y-2 text-base md:text-lg">
+            <label className="font-medium text-black">Additional Information</label>
+            <textarea
+              {...register("additionalInfo")}
+              rows={3}
+              className="w-full px-2 text-sm md:text-lg border border-gray-500 rounded h-[6rem] focus:outline-none focus:ring-0"
             />
           </div>
-          <div className='space-y-2 md:space-y-5 w-full sm:w-[48%]'>
-            <label className='font-medium text-black'>Last Name</label>
-            <input
-              type='text'
-              required
-              className='w-full px-2 text-sm md:text-xl border border-gray-500 rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0'
-            />
           </div>
-        </div>
-
-        {/* Company Name (Optional) */}
-        <div className='space-y-2 md:space-y-5'>
-          <label className='font-medium text-black'>Company Name (Optional)</label>
-          <input
-            type='text'
-            className='w-full border px-2 text-sm md:text-xl border-gray-500 rounded-[10px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0'
-          />
-        </div>
-
-        {/* Country / Region */}
-        <div className='space-y-2 md:space-y-5'>
-          <label className='font-medium text-black'>Country / Region</label>
-          <select
-            required
-            className='w-full border px-2 text-sm md:text-xl border-gray-500 rounded-[10px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0 bg-white'
-            onChange={handleCountryChange}
-            value={selectedCountry}
-          >
-            <option value=''>Select Country</option>
-            {countries.map((country) => (
-              <option key={country.code} value={country.code}>
-                {country.name}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* Province */}
-        <div className='space-y-2 md:space-y-5'>
-          <label className='font-medium text-black'>Province</label>
-          <select
-            required
-            className='w-full px-2 text-sm md:text-xl border border-gray-500 rounded-[10px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0 bg-white'
-          >
-            <option value=''>Select Province</option>
-            {selectedProvinces.map((province) => (
-              <option key={province.code} value={province.code}>
-                {province.name}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* Street Address */}
-        <div className="space-y-2 md:space-y-5">
-          <label className="font-medium text-black">Street Address</label>
-          <input
-            type="text"
-            required
-            className="w-full border px-2 text-sm md:text-xl border-gray-500 rounded-[10px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
-            placeholder="House number and street name"
-          />
-        </div>
-
-        {/* Town / City */}
-        <div className="space-y-2 md:space-y-5">
-          <label className="font-medium text-black">Town / City</label>
-          <input
-            type="text"
-            required
-            className="w-full  px-2 text-sm md:text-xl border border-gray-500 rounded-[10px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
-          />
-        </div>
-
-        {/* ZIP Code */}
-        <div className="space-y-2 md:space-y-5">
-          <label className="font-medium text-black">ZIP Code</label>
-          <input
-            type="text"
-            required
-            className="w-full px-2 text-sm md:text-xl border border-gray-500 rounded-[10px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
-          />
-        </div>
-
-        {/* Phone */}
-        <div className="space-y-2 md:space-y-5">
-          <label className="font-medium text-black">Phone</label>
-          <input
-            type="text"
-            required
-            className="w-full px-2 text-sm md:text-xl border border-gray-500 rounded-[10px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
-          />
-        </div>
-
-        {/* Email Address */}
-        <div className="space-y-2 md:space-y-5">
-          <label className="font-medium text-black">Email Address</label>
-          <input
-            type="email"
-            required
-            className="w-full px-2 text-sm md:text-xl border border-gray-500 rounded-[10px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
-          />
-        </div>
-
-        {/* Additional Information (Optional) */}
-        <div className="space-y-2 md:space-y-5">
-          <input
-            type="text"
-            className="w-full px-2 text-sm md:text-xl border border-gray-500 rounded-[10px] md:rounded-[10px] h-[40px] md:h-[75px] focus:outline-none focus:ring-0"
-            placeholder="Additional information"
-          />
-        </div>
-      </form>
-    </div>
+          
+          <div>
+          <Subtotal />
+          </div>
+        </form>
+     
+    </section>
   );
 };
 
 export default Billing;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

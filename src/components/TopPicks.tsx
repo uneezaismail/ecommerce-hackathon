@@ -8,24 +8,17 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { client } from "@/sanity/lib/client";
-import { groq } from "next-sanity";
+import { Product } from "../../types/product";
+import Link from "next/link";
+import { topPicksQuery } from "@/sanity/schemaTypes/sanity_query";
 
-export const topPicksQuery = groq`*[_type == "product" && "Top Picks" in tags]{
-  _id,
-  productName,
-  price,
-  discountPercentage,
-  inventory,
-  category,
-  description,
-  "imageUrls": images[].asset->url,
-  "slug": slug.current
-}`;
 
 export interface TopPickItem {
+  _id:number
   img: string;
   hoverImg: string;
   heading: string;
+  inventory:number;
   price: number;
   discountPercentage?: number;
   category?: string;
@@ -39,7 +32,7 @@ const TopPicks = () => {
     const fetchTopPicks = async () => {
       const data = await client.fetch(topPicksQuery);
       setTopPicks(
-        data.map((item: any) => ({
+        data.map((item: Product) => ({
           img: item.imageUrls[0] || "/placeholder.png",
           hoverImg: item.imageUrls[1] || item.imageUrls[0] || "/placeholder.png",
           heading: item.productName,
@@ -54,7 +47,7 @@ const TopPicks = () => {
   }, []);
 
   return (
-    <section className="w-full bg-[#e9e9e3]  mx-auto py-20 px-2 md:px-0 space-y-10 md:space-y-20 flex flex-col items-center justify-center">
+    <section className="w-full bg-[#e9e9e3]  mx-auto py-28 px-2 md:px-0 space-y-10 md:space-y-20 flex flex-col items-center justify-center">
       {/* Heading Section */}
       <div className="flex flex-col items-center gap-y-6 text-center">
         <h4 className="text-3xl md:text-4xl text-custom-green font-bold font-poppins ">
@@ -80,27 +73,22 @@ const TopPicks = () => {
       >
         {topPicks.map((item, index) => (
           <SwiperSlide key={index} className="place-items-center">
+            <Link  href={`/product/${item.slug}`} >
             <Card
               data={{
                 img: item.img,
                 hoverImg: item.img,
                 heading: item.heading,
+                inventory:item.inventory,
                 price: item.price,
                 discountPercentage: item.discountPercentage,
               }}
             />
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>
 
-      {/* View More Button */}
-      {/* <div className="flex items-center justify-center">
-        <Link href={"/shop"}>
-          <button className="font-poppins transition-transform duration-300 ease-in-out hover:scale-105 hover:text-gray-700 mt-10 md:mt-0 text-xl font-medium border-b-2 border-black pb-3">
-            View More
-          </button>
-        </Link>
-      </div> */}
     </section>
   );
 };

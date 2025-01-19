@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+#track{
+    background-color: #103A3A ;
+}
+
+#pagination{
+    background-color: #103A3A;
+}

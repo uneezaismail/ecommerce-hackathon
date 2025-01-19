@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 
-export const shopQuery = groq`*[_type == "product"]{
+export const shopQuery = groq`*[_type == "product"] | order(_createdAt desc) {
     _id,
     productName,
     price,
@@ -9,8 +9,10 @@ export const shopQuery = groq`*[_type == "product"]{
     category,
     description,
     "imageUrls": images[].asset->url,
-    "slug": slug.current
-  }`;
+    "slug": slug.current,
+    _createdAt
+}`;
+
   
    export const productBySlugQuery = groq`*[_type == "product" && slug.current == $slug][0]{
     _id,
@@ -35,7 +37,9 @@ export const shopQuery = groq`*[_type == "product"]{
 
 
 
-  export const topPicks = groq`*[_type == "product" && "Top Picks" in tags]{
+  
+
+  export const topPicksQuery = groq`*[_type == "product" && "Top Picks" in tags]{
     _id,
     productName,
     price,
@@ -46,7 +50,6 @@ export const shopQuery = groq`*[_type == "product"]{
     "imageUrls": images[].asset->url,
     "slug": slug.current
   }`;
-
 
   
 
@@ -94,3 +97,16 @@ export const fetchByCategory = `*[_type == "product" && category->slug.current =
   "tags": tags,
   "slug": slug.current
 }`;
+
+
+export const dynamicCategoryQuery = groq`
+  *[_type == "product" && category->slug.current == $categorySlug] {
+    _id,
+    productName,
+    price,
+    "slug":slug.current,
+    "imageUrls": images[].asset->url,
+    category,
+    discountPercentage
+  }
+`;

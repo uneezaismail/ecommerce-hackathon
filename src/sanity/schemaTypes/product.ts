@@ -1,6 +1,6 @@
 // schemas/product.js
 
-export default {
+export const product = {
   name: 'product',
   title: 'Product',
   type: 'document',
@@ -18,7 +18,7 @@ export default {
     { name: 'slug', type: 'slug', title: 'Slug', options: {
       source: 'productName',
       maxLength: 96,
-      slugify: (input:any) => input
+      slugify: (input: string) => input
         .toLowerCase()
         .replace(/\s+/g, '-')
         .replace(/[^\w\-]+/g, '')
