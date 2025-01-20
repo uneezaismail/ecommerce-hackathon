@@ -6,25 +6,10 @@ import { FaStarHalfAlt } from "react-icons/fa";
 import CartItemSheet from "./cart";
 import { useCart } from "@/app/context/cartContext";
 import { toast } from "react-hot-toast";
+import { Productdetail } from "../../types/product";
 
-interface Product {
-  _id: string;
-  imageUrls: string[];  
-  productName: string;
-  price: number;
-  discountPercentage?: number;
-  description: string;
-  sizes: string[];
-  material: string;
-  dimensions: string;
-  weight: string;
-  colors: string[];
-  inventory: number;
-}
-
-
-interface ProductDataProps {
-  product: Product;
+export interface ProductDataProps {
+  product: Productdetail;
 }
 
 const ProductData: React.FC<ProductDataProps> = ({ product }) => {
@@ -34,7 +19,6 @@ const ProductData: React.FC<ProductDataProps> = ({ product }) => {
   const [activeColor, setActiveColor] = useState<string>(product.colors[0]);
 
   const { addItem } = useCart();
-
 
   const salePrice = product.discountPercentage
     ? product.price - (product.price * product.discountPercentage) / 100
@@ -46,32 +30,30 @@ const ProductData: React.FC<ProductDataProps> = ({ product }) => {
       setQuantity((prev) => prev - 1);
     }
   };
-  console.log(product)
+  console.log(product);
 
   const finalPrice = salePrice || product.price;
 
   const isOutOfStock = product.inventory === 0;
-  
+
   const handleAddToCart = () => {
     if (!isOutOfStock) {
-    addItem({
-      id: product._id as string,
-      name: product.productName,
-      price: finalPrice,
-      discount: product.discountPercentage,
-      quantity,
-      images: product.imageUrls[0], 
-      size: activeSize,
-      color: activeColor,
-    });
-    
- 
+      addItem({
+        id: product._id as string,
+        name: product.productName,
+        price: finalPrice,
+        discount: product.discountPercentage,
+        quantity,
+        images: product.imageUrls[0],
+        size: activeSize,
+        color: activeColor,
+      });
 
-  toast.success(`${product.productName} added to cart`);
-}else{
-  toast.error(`Sorry, this product is out of stock.`);
-}
-}
+      toast.success(`${product.productName} added to cart`);
+    } else {
+      toast.error(`Sorry, this product is out of stock.`);
+    }
+  };
 
   return (
     <>
@@ -84,18 +66,25 @@ const ProductData: React.FC<ProductDataProps> = ({ product }) => {
           <div className="flex items-center gap-4">
             {salePrice ? (
               <div className="text-xl">
-                <span className="line-through text-gray-600">Rs. {product.price}</span>
-                <span className="text-gray-950 font-semibold ml-2">Rs. {salePrice}</span>
+                <span className="line-through text-gray-600">
+                  Rs. {product.price}
+                </span>
+                <span className="text-gray-950 font-semibold ml-2">
+                  Rs. {salePrice}
+                </span>
               </div>
             ) : (
-              <p className="text-xl text-gray-950 font-semibold">Rs. {product.price}</p>
+              <p className="text-xl text-gray-950 font-semibold">
+                Rs. {product.price}
+              </p>
             )}
 
-            {product.discountPercentage !== undefined && product.discountPercentage > 0 && (
-              <div className="bg-[#c34d4d] text-white text-xs px-4 py-1">
-                {product.discountPercentage}% OFF
-              </div>
-            )}
+            {product.discountPercentage !== undefined &&
+              product.discountPercentage > 0 && (
+                <div className="bg-[#c34d4d] text-white text-xs px-4 py-1">
+                  {product.discountPercentage}% OFF
+                </div>
+              )}
           </div>
 
           <div className="flex items-center gap-x-4 gap-y-6">
@@ -158,43 +147,51 @@ const ProductData: React.FC<ProductDataProps> = ({ product }) => {
             </div>
 
             <button
-  className={`md:py-4 px-6 md:px-12 w-full border font-semibold rounded relative overflow-hidden transition-all duration-300 ease-out ${
-    isOutOfStock
-      ? "bg-gray-400 text-gray-700 cursor-not-allowed"
-      : "bg-custom-green text-white hover:bg-emerald-950 border-black group"
-  }`}
-  onClick={handleAddToCart}
-  disabled={isOutOfStock}
->
-  <span className="relative z-10">{isOutOfStock ? "OUT OF STOCK" : "ADD TO CART"}</span>
-  {!isOutOfStock && (
-    <span className="absolute top-0 left-0 w-full h-full bg-black opacity-0 transition-all duration-500 ease-out group-hover:opacity-20 group-hover:shadow-[0_20px_50px_0_rgba(0,0,0,0.2)]"></span>
-  )}
-</button>
-
-
+              className={`md:py-4 px-6 md:px-12 w-full border font-semibold rounded relative overflow-hidden transition-all duration-300 ease-out ${
+                isOutOfStock
+                  ? "bg-gray-400 text-gray-700 cursor-not-allowed"
+                  : "bg-custom-green text-white hover:bg-emerald-950 border-black group"
+              }`}
+              onClick={handleAddToCart}
+              disabled={isOutOfStock}
+            >
+              <span className="relative z-10">
+                {isOutOfStock ? "OUT OF STOCK" : "ADD TO CART"}
+              </span>
+              {!isOutOfStock && (
+                <span className="absolute top-0 left-0 w-full h-full bg-black opacity-0 transition-all duration-500 ease-out group-hover:opacity-20 group-hover:shadow-[0_20px_50px_0_rgba(0,0,0,0.2)]"></span>
+              )}
+            </button>
           </div>
 
           <div className="flex flex-col flex-wrap gap-3 py-6">
-            <h4 className="text-xl font-semibold pl-2 text-custom-green">Specifications</h4>
+            <h4 className="text-xl font-semibold pl-2 text-custom-green">
+              Specifications
+            </h4>
             <ul className="list-disc text-sm pl-6 text-custom-green space-y-2">
               <li>
-                <span className="font-medium mr-2">Material:</span> <span>{product.material}</span>
+                <span className="font-medium mr-2">Material:</span>{" "}
+                <span>{product.material}</span>
               </li>
               <li>
-                <span className="font-medium mr-2">Dimensions:</span> {product.dimensions}
+                <span className="font-medium mr-2">Dimensions:</span>{" "}
+                {product.dimensions}
               </li>
               <li>
-                <span className="font-medium mr-2">Weight:</span> {product.weight}
+                <span className="font-medium mr-2">Weight:</span>{" "}
+                {product.weight}
               </li>
               <li>
-                <span className="font-medium mr-2">Color:</span> {product.colors.join(", ")}
+                <span className="font-medium mr-2">Color:</span>{" "}
+                {product.colors.join(", ")}
               </li>
             </ul>
           </div>
           <p className="pl-2 text-custom-green">
-            <span className="font-semibold text-sm text-custom-green">Note:</span> Actual color may
-            vary from image
+            <span className="font-semibold text-sm text-custom-green">
+              Note:
+            </span>{" "}
+            Actual color may vary from image
           </p>
         </div>
         <CartItemSheet open={showCart} setOpen={setShowCart} />
@@ -204,4 +201,3 @@ const ProductData: React.FC<ProductDataProps> = ({ product }) => {
 };
 
 export default ProductData;
-

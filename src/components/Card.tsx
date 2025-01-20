@@ -4,8 +4,8 @@ import { CardProps } from "../../types/cardProps";
 
 const Card: React.FC<CardProps> = ({ data }) => {
   const salePrice = data.discountPercentage
-  ? (data.price - (data.price * data.discountPercentage) / 100).toFixed(2)
-  : undefined;
+    ? (data.price - (data.price * data.discountPercentage) / 100).toFixed(2)
+    : undefined;
 
   const isSoldOut = data.inventory <= 0;
 
@@ -13,14 +13,18 @@ const Card: React.FC<CardProps> = ({ data }) => {
     <div className="group text-custom-green w-[300px] space-y-4 relative">
       {/* Tags */}
       <div className="absolute left-2 z-40 top-2 space-y-2">
-
-      {isSoldOut ? (
-          <div className="bg-gray-400 text-white text-xs px-4 py-1">SOLD OUT</div>
+        {isSoldOut ? (
+          <div className="bg-gray-400 text-white text-xs px-4 py-1">
+            SOLD OUT
+          </div>
         ) : (
-          data.discountPercentage !== undefined &&
+        data.discountPercentage !== undefined &&
           data.discountPercentage > 0 && (
-          <div className="bg-[#c34d4d] text-white text-xs px-4 py-1">{data.discountPercentage}%OFF</div>
-        ))}
+            <div className="bg-[#c34d4d] text-white text-xs px-4 py-1">
+              {data.discountPercentage}%OFF
+            </div>
+          )
+        )}
       </div>
 
       {/* Image Container */}
