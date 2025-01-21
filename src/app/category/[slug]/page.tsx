@@ -1,28 +1,24 @@
+
 import { client } from '@/sanity/lib/client';
 import Link from 'next/link';
-import React from 'react';
 import Card from '@/components/Card';
 import Delivery from '@/components/ourDelivery';
 import { Product } from '../../../../types/product';
 import { dynamicCategoryQuery } from '@/sanity/schemaTypes/sanity_query';
-
-
 
 interface Params {
   slug: string;
 }
 
 
-const CategoryPage = async ({ params }: { params: Promise<Params> }) => {
-  const { slug } = await params;
 
-  console.log('Category slug:', slug);
+const CategoryPage = async ({ params }: { params: Params }) => {
+  const { slug } = params;
 
-
+  // Fetch products directly in the server component
   const products = await client.fetch(dynamicCategoryQuery, { categorySlug: slug });
 
-
-  if (!products || products.length === 0) {
+  if (products.length === 0) {
     return (
       <section className="space-y-10">
         <p>No products found in this category.</p>
@@ -42,7 +38,7 @@ const CategoryPage = async ({ params }: { params: Promise<Params> }) => {
                   hoverImg: item.imageUrls?.[1] || item.imageUrls?.[0] || '/placeholder.png',
                   heading: item.productName,
                   price: item.price,
-                  inventory:item.inventory,
+                  inventory: item.inventory,
                   category: item.category,
                   discountPercentage: item.discountPercentage,
                 }}

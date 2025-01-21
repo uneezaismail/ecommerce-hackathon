@@ -1,5 +1,3 @@
-
-
 "use client"
 import Image from "next/image";
 import React, { useState } from "react";
@@ -21,6 +19,7 @@ const ProductImages : React.FC<ProductImages> = ({ images } :ProductImages) => {
             alt={`Thumbnail ${index + 1}`}
             width={120}
             height={100}
+            loading="lazy"
             className={`rounded shadow w-20 h-20 sm:w-32 sm:h-28 md:w-40 md:h-36 lg:w-[120px] lg:h-[100px] cursor-pointer  ${
                 selectedImage === url ? "border-2 border-black" : ""
               }`}
@@ -36,6 +35,7 @@ const ProductImages : React.FC<ProductImages> = ({ images } :ProductImages) => {
           alt="Main Product Image"
           width={300}
           height={200}
+          loading="lazy"
           className="rounded shadow-sm w-full h-full object-cover"
         />
       </div>

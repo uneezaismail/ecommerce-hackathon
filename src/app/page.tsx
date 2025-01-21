@@ -6,7 +6,7 @@ import TopPicks from "@/components/TopPicks";
 import { client } from "@/sanity/lib/client";
 import { newArrivalsQuery } from "@/sanity/schemaTypes/sanity_query";
 import ProductCategory from "./category/page";
-import OrderTracking from "@/components/OrderTracking";
+
 
 export default async function Home() {
   const newArrivals = await client.fetch(newArrivalsQuery);
@@ -16,10 +16,10 @@ export default async function Home() {
     <main className="flex flex-col">
       <Hero />
 <ProductCategory/>
-<OrderTracking/>
+
       <TopPicks />
       <NewArrivals product={newArrivalsProduct} />
-      <Blog />
+      
       <HomeContact />
     </main>
   );

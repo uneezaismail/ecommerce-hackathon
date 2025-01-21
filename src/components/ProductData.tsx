@@ -43,10 +43,11 @@ const ProductData: React.FC<ProductDataProps> = ({ product }) => {
         name: product.productName,
         price: finalPrice,
         discount: product.discountPercentage,
-        quantity,
+        inventory: product.inventory,
         images: product.imageUrls[0],
         size: activeSize,
         color: activeColor,
+        quantity: quantity
       });
 
       toast.success(`${product.productName} added to cart`);

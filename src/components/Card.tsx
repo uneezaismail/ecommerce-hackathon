@@ -29,24 +29,25 @@ const Card: React.FC<CardProps> = ({ data }) => {
 
       {/* Image Container */}
       <div className="relative w-full h-[280px] md:h-[300px] flex items-center justify-center bg-transparent">
-        {/* Default Image */}
-        <Image
-          src={data.img}
-          alt={data.heading}
-          layout="fill"
-          objectFit="cover"
-          className="transition-opacity duration-300 opacity-100 group-hover:opacity-0"
-        />
+  {/* Default Image */}
+  <Image
+    src={data.img}
+    alt={data.heading}
+    fill
+    style={{ objectFit: "cover" }}
+    className="transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+  />
 
-        {/* Hover Image */}
-        <Image
-          src={data.hoverImg}
-          alt={`${data.heading}-hover`}
-          layout="fill"
-          objectFit="cover"
-          className="absolute transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-        />
-      </div>
+  {/* Hover Image */}
+  <Image
+    src={data.hoverImg}
+    alt={`${data.heading}-hover`}
+    fill
+    style={{ objectFit: "cover" }}
+    className="absolute transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+  />
+</div>
+
 
       {/* Card Text */}
       <div className="space-y-3 text-center w-full">

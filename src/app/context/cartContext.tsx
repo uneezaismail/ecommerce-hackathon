@@ -1,8 +1,6 @@
-"use client";
-
+"use client"
 import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
-// Define the types for the cart items
 type CartItem = {
   id: string;
   name: string;
@@ -12,6 +10,7 @@ type CartItem = {
   images: string;
   size?: string;
   color?: string;
+  inventory: number
 };
 
 type CartContextType = {
@@ -22,7 +21,7 @@ type CartContextType = {
   decrementItem: (id: string) => void;
   totalPrice: number;
   totalItems: number;
-  cartItemsNumber: number; // Number of unique items in the cart
+  cartItemsNumber: number; 
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -39,12 +38,10 @@ type CartProviderProps = {
   children: ReactNode;
 };
 
-
-
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  // Load cart items from localStorage on initial render
+
   useEffect(() => {
     const storedCart = localStorage.getItem("cartItems");
     if (storedCart) {
@@ -53,7 +50,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   }, []);
 
 
-  // Update localStorage whenever cartItems change
+
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
@@ -80,7 +77,9 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   const incrementItem = (id: string) => {
     setCartItems((prev) =>
       prev.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+        item.id === id && item.quantity < item.inventory 
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
       )
     );
   };
@@ -100,9 +99,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     return acc + price * item.quantity;
   }, 0);
 
-
   const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-
 
   const cartItemsNumber = cartItems.length;
 
@@ -116,7 +113,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         decrementItem,
         totalPrice,
         totalItems,
-        cartItemsNumber, // Provide cartItemsNumber here
+        cartItemsNumber,
       }}
     >
       {children}

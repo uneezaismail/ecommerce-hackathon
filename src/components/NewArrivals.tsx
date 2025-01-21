@@ -15,7 +15,7 @@ type NewArrivalsProps = {
 
 const NewArrivals: React.FC<NewArrivalsProps> = ({ product }) => {
   return (
-    <section className="relative bg-custom-green flex md:flex-row flex-col gap-x-8 lg:gap-x-0 xl:gap-x-16  w-full h-fit text-white items-center">
+    <section className="relative bg-custom-green flex md:flex-row flex-col-reverse pt-10 md:pt-0 gap-8 lg:gap-x-0 xl:gap-x-16  w-full h-fit text-white items-center">
       {/* Image Section */}
       <Image
         src={product.image}

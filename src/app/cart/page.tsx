@@ -15,6 +15,7 @@ type CartItem = {
   images: string;
   size?: string;
   color?: string;
+  inventory:number;
 };
 
 
@@ -95,11 +96,12 @@ const Cart = () => {
                           {item.quantity}
                         </span>
                         <button
-                          onClick={() => incrementItem(item.id)}
-                          className="px-2 py-1 rounded-md"
-                        >
-                          +
-                        </button>
+  onClick={() => incrementItem(item.id)}
+  disabled={item.quantity >= (item.inventory || Infinity)}
+  className={`px-2 py-1 rounded-md ${item.quantity >= (item.inventory || Infinity) ? "opacity-50 cursor-not-allowed" : ""}`}
+>
+  +
+</button>
                       </div>
                       <div className="flex justify-end w-full">
                         <RiDeleteBinLine
