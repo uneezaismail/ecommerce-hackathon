@@ -1,3 +1,4 @@
+// components/ShopPage.tsx
 "use client"
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { client } from "@/sanity/lib/client";
