@@ -1,9 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { AiFillStar } from "react-icons/ai";
-import { FaStarHalfAlt } from "react-icons/fa";
-import CartItemSheet from "./cart";
 import { useCart } from "@/app/context/cartContext";
 import { toast } from "react-hot-toast";
 import { Productdetail } from "../../types/product";
@@ -13,7 +10,6 @@ export interface ProductDataProps {
 }
 
 const ProductData: React.FC<ProductDataProps> = ({ product }) => {
-  const [showCart, setShowCart] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [activeSize, setActiveSize] = useState<string>(product.sizes[0]);
   const [activeColor, setActiveColor] = useState<string>(product.colors[0]);
@@ -88,17 +84,6 @@ const ProductData: React.FC<ProductDataProps> = ({ product }) => {
               )}
           </div>
 
-          <div className="flex items-center gap-x-4 gap-y-6">
-            <div className="flex items-center">
-              <AiFillStar className="text-[#f2e385] text-md md:text-xl" />
-              <AiFillStar className="text-[#f2e385] text-md md:text-xl" />
-              <AiFillStar className="text-[#f2e385] text-md md:text-xl" />
-              <AiFillStar className="text-[#f2e385] text-md md:text-xl" />
-              <FaStarHalfAlt className="text-[#f2e385]" />
-            </div>
-            <span>|</span>
-            <span>5 Customer Review</span>
-          </div>
 
           <p className="mb-4 md:mb-0 text-black">{product.description}</p>
 
@@ -195,7 +180,6 @@ const ProductData: React.FC<ProductDataProps> = ({ product }) => {
             Actual color may vary from image
           </p>
         </div>
-        <CartItemSheet open={showCart} setOpen={setShowCart} />
       </div>
     </>
   );

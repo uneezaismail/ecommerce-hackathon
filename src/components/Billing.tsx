@@ -110,7 +110,7 @@ const Billing = () => {
           <div className="space-y-2 text-base md:text-lg">
             <label className="font-medium text-black">Country / Region</label>
             <Select onValueChange={(value) => setValue("country", value)}>
-              <SelectTrigger className="select-class">
+              <SelectTrigger className="select-class" aria-label="select country">
                 <SelectValue placeholder="Select Country" />
               </SelectTrigger>
               <SelectContent className="bg-white z-30">
@@ -130,7 +130,7 @@ const Billing = () => {
           <div className="space-y-2 text-base md:text-lg">
             <label className="font-medium text-black">Province</label>
             <Select onValueChange={(value) => setValue("province", value)}>
-              <SelectTrigger className="select-class">
+              <SelectTrigger className="select-class" aria-label="select province">
                 <SelectValue placeholder="Select Province" />
               </SelectTrigger>
               <SelectContent className="bg-white z-30">
@@ -150,7 +150,7 @@ const Billing = () => {
           <div className="space-y-2 text-base md:text-lg">
             <label className="font-medium text-black">City</label>
             <Select onValueChange={(value) => setValue("city", value)}>
-              <SelectTrigger className="select-class">
+              <SelectTrigger className="select-class" aria-label="select city">
                 <SelectValue placeholder="Select City" />
               </SelectTrigger>
               <SelectContent className="bg-white z-30">
@@ -168,9 +168,9 @@ const Billing = () => {
           <div className="space-y-2 text-base md:text-lg">
             <label className="font-medium text-black">Town / Area</label>
             <Select onValueChange={(value) => setValue("area", value)}>
-              <SelectTrigger className="select-class">
+              <SelectTrigger className="select-class" aria-label="select an area">
                 <SelectValue placeholder="Select Area" />
-              </SelectTrigger>
+              </SelectTrigger >
               <SelectContent className="bg-white z-30">
                 {karachiAreas.map((area) => (
                   <SelectItem key={area} value={area}>

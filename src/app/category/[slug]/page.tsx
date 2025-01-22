@@ -6,21 +6,18 @@ import Delivery from '@/components/ourDelivery';
 import { Product } from '../../../../types/product';
 import { dynamicCategoryQuery } from '@/sanity/schemaTypes/sanity_query';
 
-interface Params {
-  slug: string;
+interface ProductDetailsProps {
+  params: Promise<{ slug: string }>;
 }
 
+const CategoryPage = async ({ params }: ProductDetailsProps) => {
+  const { slug } = await params;
 
-
-const CategoryPage = async ({ params }: { params: Params }) => {
-  const { slug } = params;
-
-  // Fetch products directly in the server component
   const products = await client.fetch(dynamicCategoryQuery, { categorySlug: slug });
 
-  if (products.length === 0) {
+  if (products.length === 2) {
     return (
-      <section className="space-y-10">
+      <section className="space-y-10 text-center min-h-[500px] flex flex-col items-center justify-center text-2xl md:text-3xl text-custom-green font-medium">
         <p>No products found in this category.</p>
       </section>
     );
@@ -46,12 +43,7 @@ const CategoryPage = async ({ params }: { params: Params }) => {
             </Link>
           ))}
         </div>
-        <div className="flex w-fit items-center gap-x-3 md:gap-x-9 mx-auto my-16">
-          <button className="px-6 md:px-8 py-4 md:py-6 bg-[#FBEBB5] rounded-xl">1</button>
-          <button className="px-6 md:px-8 py-4 md:py-6 bg-[#FFF9E5] rounded-xl">2</button>
-          <button className="px-6 md:px-8 py-4 md:py-6 bg-[#FFF9E5] rounded-xl">3</button>
-          <button className="px-6 md:px-8 py-4 md:py-6 bg-[#FFF9E5] rounded-xl">Next</button>
-        </div>
+       
       </div>
       <Delivery />
     </section>

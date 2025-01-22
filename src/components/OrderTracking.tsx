@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { TextField, Button, CircularProgress, Typography } from "@mui/material";
-import axios from "axios"; 
+
 interface OrderData {
-    orderId: string;
-    status: string;
-    deliveryDate: string;
-  }
+  orderId: string;
+  status: string;
+  deliveryDate: string;
+}
+
 const OrderTracking = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [loading, setLoading] = useState(false);
@@ -18,7 +19,6 @@ const OrderTracking = () => {
     setError("");
     setOrderData(null);
 
-    
     const phoneRegex = /^[0-9]{11}$/;
     if (!phoneRegex.test(phoneNumber)) {
       setError("Please enter a valid 10-digit phone number.");
@@ -27,18 +27,23 @@ const OrderTracking = () => {
 
     setLoading(true);
     try {
-      const response = await axios.get(`/api/track-order?phone=${phoneNumber}`);
-      setOrderData(response.data);
+      const response = await fetch(`/api/track-order?phone=${phoneNumber}`);
+      if (!response.ok) {
+        throw new Error("Unable to find orders for the given phone number.");
+      }
+
+      const data: OrderData = await response.json();
+      setOrderData(data);
     } catch (err) {
-      setError("Unable to find orders for the given phone number.");
-      console.log(err)
+      setError(err instanceof Error ? err.message : "Something went wrong.");
+      console.log(err);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 ">
+    <div id="#track" className="min-h-screen flex items-center justify-center p-4 ">
       <div className="bg-white text-custom-green border shadow rounded-lg p-6 w-full max-w-lg">
         <Typography variant="h4" gutterBottom align="center">
           Track Your Order
@@ -58,7 +63,8 @@ const OrderTracking = () => {
           />
         </div>
         <div className="mt-4">
-          <Button id="track"
+          <Button
+            id="track"
             variant="contained"
             color="secondary"
             fullWidth

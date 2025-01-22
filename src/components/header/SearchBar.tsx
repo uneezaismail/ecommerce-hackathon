@@ -1,6 +1,6 @@
 "use client";
+import { X } from "lucide-react";
 import React from "react";
-import { LiaTimesSolid } from "react-icons/lia";
 
 interface SearchBarProps {
   setIsSearchOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -20,7 +20,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ setIsSearchOpen }) => (
         onClick={() => setIsSearchOpen(false)}
         className="p-2 hover:scale-110 transition-transform"
       >
-        <LiaTimesSolid size={20} />
+        <X size={20} />
       </button>
     </div>
   </div>

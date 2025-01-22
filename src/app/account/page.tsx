@@ -1,5 +1,4 @@
 import Login from '@/components/Login'
-import NavImage from '@/components/NavImage'
 import Delivery from '@/components/ourDelivery'
 import Register from '@/components/Register'
 import React from 'react'

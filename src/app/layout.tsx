@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/header/Header";
-import { Playfair_Display, Poppins } from 'next/font/google';
 import Footer from "@/components/Footer";
 import { CartProvider } from "./context/cartContext";
 import { Toaster } from "react-hot-toast";
+import TopHeader from "@/components/header/TopHeader";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,6 +36,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable}    font-poppins antialiased `}
       >
         <CartProvider>
+          <TopHeader/>
         <Header/>
         {children}
         <Toaster/>

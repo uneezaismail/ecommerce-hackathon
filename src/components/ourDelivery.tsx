@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Delivery = () => {
   const Deliverydetail = [
@@ -17,30 +17,20 @@ const Delivery = () => {
   ];
 
   return (
-    <section className="bg-[#F6F6F0] text-custom-green px-2 mt-10  flex items-center justify-center py-16 md:py-16 lg:py-24">
-      <div className="w-fit mx-auto grid grid-cols-1  md:grid-cols-3 gap-11">
+    <section className="bg-[#F6F6F0] text-custom-green mt-20 flex items-center justify-center py-16 md:py-16 lg:py-24">
+      <div className="w-full max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-11">
         {Deliverydetail.map((detail, index) => (
           <div
             key={index}
-            className=" w-full max-w-[367px] text-center md:text-start  mx-auto space-y-2"
+            className=" max-w-[367px] min-h-[150px] md:min-h-[180px] text-center md:text-start mx-auto space-y-2"
           >
             <h4 className="font-semibold text-2xl lg:text-3xl">{detail.heading}</h4>
-            <p className="">{detail.para}</p>
+            <p>{detail.para}</p>
           </div>
         ))}
       </div>
     </section>
   );
-}
+};
 
 export default Delivery;
-
-
-
-
-
-
-
-
-
-

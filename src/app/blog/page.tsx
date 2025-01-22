@@ -1,9 +1,7 @@
 import BlogCard from '@/components/BlogCard';
-import NavImage from '@/components/NavImage';
 import Delivery from '@/components/ourDelivery';
 import Image from 'next/image';
 import React from 'react';
-import { HiMiniMagnifyingGlass } from 'react-icons/hi2';
 
 const blogs = [
   {
@@ -49,7 +47,6 @@ const recentpost = [{
 const BlogPage: React.FC = () => {
   return (
     <section className="space-y-10 lg:space-y-28">
-      <NavImage heading={"Blog"} path={"Home"} currentPage={"Blog"}/>
   <div className="flex flex-col w-full lg:flex-row max-w-7xl mx-auto space-y-8 md:space-y-0">
     {/* Left Section */}
     <div className="flex-1 flex flex-col  mx-auto space-y-20  md:space-y-16 items-center justify-center">
@@ -68,7 +65,6 @@ const BlogPage: React.FC = () => {
             className="w-full h-[58px] px-4 xl:pr-12 border border-black rounded-xl focus:outline-none"
           />
           {/* Search Icon */}
-          <HiMiniMagnifyingGlass className="absolute right-4 top-1/2 transform -translate-y-1/2" size={24} />
         </div>
         {/* Categories */}
         <ul className="px-4 space-y-8 flex flex-col">

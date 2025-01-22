@@ -1,6 +1,6 @@
 "use client";
+import { SlidersHorizontal } from "lucide-react";
 import React, { useState } from "react";
-import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
 
 type Filters = {
   search: string;
@@ -18,8 +18,7 @@ type FilterSortBarProps = {
 
 const FilterSortBar: React.FC<FilterSortBarProps> = ({ filters, setFilters }) => {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
-  const [isAvailabilityOpen, setIsAvailabilityOpen] = useState(false);
-  const [isPriceOpen, setIsPriceOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -28,6 +27,10 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({ filters, setFilters }) =>
 
   const handleCheckboxChange = (name: keyof Filters, value: boolean | null) => {
     setFilters((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const toggleDropdown = (dropdown: string) => {
+    setOpenDropdown((prev) => (prev === dropdown ? null : dropdown));
   };
 
   return (
@@ -40,7 +43,7 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({ filters, setFilters }) =>
         >
           {!isFilterVisible && (
             <div className="flex gap-2 items-center">
-              <HiOutlineAdjustmentsHorizontal />
+              <SlidersHorizontal />
               <span>Filter</span>
             </div>
           )}
@@ -56,6 +59,7 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({ filters, setFilters }) =>
           >
             Close
           </button>
+
           {/* Small Screen Filters */}
           <div className="mb-6">
             <h3 className="text-base font-medium mb-2">Availability</h3>
@@ -76,6 +80,7 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({ filters, setFilters }) =>
               Out of Stock
             </label>
           </div>
+
           <div className="mb-6">
             <h3 className="text-base font-medium mb-2">Price</h3>
             <p className="text-sm text-gray-500 mb-2">The highest price is Rs.552,533</p>
@@ -119,14 +124,12 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({ filters, setFilters }) =>
           <div className="relative">
             <button
               className="text-sm font-medium flex items-center gap-1"
-              onClick={() => setIsAvailabilityOpen((prev) => !prev)}
+              onClick={() => toggleDropdown("availability")}
             >
               Availability{" "}
-              <span className={`transform ${isAvailabilityOpen ? "rotate-180" : ""}`}>
-                ▼
-              </span>
+              <span className={`transform ${openDropdown === "availability" ? "rotate-180" : ""}`}>▼</span>
             </button>
-            {isAvailabilityOpen && (
+            {openDropdown === "availability" && (
               <div className="absolute top-8 left-0 bg-white shadow-lg rounded-lg p-4 py-10 w-96 z-50">
                 <label
                   onClick={() => setFilters((prev) => ({ ...prev, inStock: true }))}
@@ -147,20 +150,15 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({ filters, setFilters }) =>
           </div>
 
           {/* Price Dropdown */}
-          <div className="relative z-40">
+          <div className="relative z-50">
             <button
               className="text-sm font-medium flex items-center gap-1"
-              onClick={() => {
-                setIsPriceOpen((prev) => !prev);
-                setIsAvailabilityOpen(false);
-              }}
+              onClick={() => toggleDropdown("price")}
             >
               Price{" "}
-              <span className={`transform ${isPriceOpen ? "rotate-180" : ""}`}>
-                ▼
-              </span>
+              <span className={`transform ${openDropdown === "price" ? "rotate-180" : ""}`}>▼</span>
             </button>
-            {isPriceOpen && (
+            {openDropdown === "price" && (
               <div className="absolute top-8 left-0 bg-white shadow-lg rounded-lg p-4 py-10 w-96 z-40">
                 <p className="text-sm text-black mb-2">The highest price is Rs.552,533</p>
                 <input

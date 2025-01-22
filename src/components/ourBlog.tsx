@@ -3,8 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaRegClock } from "react-icons/fa";
-import { FiCalendar } from "react-icons/fi";
+import { Calendar, Clock } from "lucide-react";
 
 const Blog = () => {
   const blogImages = ["/ourblog-1.avif", "/ourblog-2.avif", "/ourblog-3.avif"];
@@ -46,7 +45,7 @@ const Blog = () => {
            transition={{ duration: 0.8, delay: index * 0.2 }}
            whileHover={{
              scale: 1.05,
-             boxShadow: "0",
+             
              transition: { duration: 0.3 }
            }}
            whileTap={{ scale: 0.98 }}
@@ -77,13 +76,13 @@ const Blog = () => {
               <div className="flex items-center gap-x-5 font-poppins">
                 <p className="flex items-center font-light gap-x-2">
                   <span className="font-bold">
-                    <FaRegClock size={20} />
+                  <Clock size={20} />
                   </span>
                   <span>5 min</span>
                 </p>
                 <p className="flex items-center font-light gap-x-2">
                   <span>
-                    <FiCalendar size={20} />
+                  <Calendar size={20} />
                   </span>
                   <span>12 <sup>th</sup></span>
                   <span>Oct 2022</span>

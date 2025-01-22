@@ -1,14 +1,10 @@
-import NavImage from '@/components/NavImage'
 import Delivery from '@/components/ourDelivery'
+import { Clock, MapPin, Phone } from 'lucide-react'
 import React from 'react'
-import { FaPhoneAlt } from 'react-icons/fa'
-import { GoClockFill } from 'react-icons/go'
-import { IoLocation } from 'react-icons/io5'
 
 const Contact = () => {
   return (
-   <section className='space-y-10 lg:space-y-28'>
-      <NavImage heading={"Contact"} path={"Home"} currentPage={"Contact"}/>
+   <section className='space-y-10 lg:space-y-28 mt-16'>
       <div className='flex flex-col gap-y-2 items-center'>
         <h2 className='text-3xl md:text-4xl font-semibold text-custom-green'>Get In Touch With Us</h2>
         <p className='text-gray-600 w-[95%] sm:w-[70%] lg:w-[50%] text-center'>For More Information About Our Product & Services. Please Feel Free To Drop Us An Email. Our Staff Always Be There To Help You Out. Do Not Hesitate!</p>
@@ -19,12 +15,12 @@ const Contact = () => {
 {/* contact address  */}
 <div className='w-full sm:w-[500px] md:w-[500px] lg:w-[393px]  px-12 py-10 space-y-10'>
       <div className='flex gap-x-6'>
-        <span><IoLocation size={30}/></span>
+        <span><MapPin size={30}/></span>
         <div className='flex flex-col'> <h4 className=' text-2xl font-medium'>Address</h4>
         <p>236 5th SE Avenue, New York NY10000, United States</p></div>
       </div>
       <div className='flex gap-x-4'>
-        <span><FaPhoneAlt size={30}/></span>
+        <span><Phone size={30}/></span>
         <div className='flex flex-col'> <h4 className=' text-2xl font-medium'>Phone</h4>
         <p>Mobile: +(84) 546-6789
         </p>
@@ -32,7 +28,7 @@ const Contact = () => {
         </div>
       </div>
       <div className='flex gap-x-4'>
-        <span><GoClockFill size={30}/></span>
+        <span><Clock size={30}/></span>
         <div className='flex flex-col'> <h4 className=' text-2xl font-medium'>Working Time</h4>
         <p>Monday-Friday: 9:00 - 22:00
 

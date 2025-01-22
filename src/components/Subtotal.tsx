@@ -91,7 +91,7 @@ const Subtotal = () => {
               </label>
             </div>
           </div>
-          <p className="font-light text-gray-400">
+          <p className="font-light text-gray-600">
             The selected method will guide you to securely complete the payment. Please use your Order ID as the payment reference.
           </p>
         </div>

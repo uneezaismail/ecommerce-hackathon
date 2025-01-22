@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 type Product = {
   _id: string;
@@ -16,7 +17,6 @@ type NewArrivalsProps = {
 const NewArrivals: React.FC<NewArrivalsProps> = ({ product }) => {
   return (
     <section className="relative bg-custom-green flex md:flex-row flex-col-reverse pt-10 md:pt-0 gap-8 lg:gap-x-0 xl:gap-x-16  w-full h-fit text-white items-center">
-      {/* Image Section */}
       <Image
         src={product.image}
         alt={product.productName}
@@ -32,11 +32,13 @@ const NewArrivals: React.FC<NewArrivalsProps> = ({ product }) => {
           <h3 className="text-4xl lg:text-5xl font-bold font-poppins">{product.productName}</h3>
         </div>
         <div>
-          <button className="px-6 text-lg py-3 lg:px-16 w-fit lg:py-5 hover:bg-white hover:text-black sm:text-xl border font-poppins border-white">
+        <Link href={`/product/${product.slug}`} key={product._id} className="mx-auto">
+        <button className="px-6 text-lg py-3 lg:px-16 w-fit lg:py-5 hover:bg-white hover:text-black sm:text-xl border font-poppins border-white">
             Order Now
-          </button>
+          </button></Link>
         </div>
       </div>
+      
     </section>
   );
 };
