@@ -1,14 +1,13 @@
-// components/ShopPage.tsx
-"use client"
+"use client";
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { client } from "@/sanity/lib/client";
 import { shopQuery } from "@/sanity/schemaTypes/sanity_query";
-import Card from "@/components/Card";
+import Card from "@/components/Product/Card";
 import FilterSortBar from "@/components/FilterSortBar";
 import PaginationComponent from "@/components/Pagination";
 import Link from "next/link";
-import Delivery from "@/components/ourDelivery";
-import { FilterX } from "lucide-react";
+import { BetweenHorizontalEnd, FilterX, LayoutGrid } from "lucide-react";
+
 
 const ITEMS_PER_PAGE = 12;
 
@@ -41,6 +40,7 @@ const ShopPage = ({ searchQuery }: { searchQuery: string }) => {
     sortOption: "",
   });
   const [currentPage, setCurrentPage] = useState(1);
+  const [gridView, setGridView] = useState<"single" | "double">("double");
 
   const fetchProducts = useCallback(async () => {
     const productData = await client.fetch(shopQuery);
@@ -50,6 +50,24 @@ const ShopPage = ({ searchQuery }: { searchQuery: string }) => {
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setGridView("double"); 
+      } else {
+        setGridView("single");
+      }
+    };
+
+  
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const applyFilters = useMemo(() => {
     const query = (filters.search || searchQuery || "").toLowerCase();
@@ -97,12 +115,40 @@ const ShopPage = ({ searchQuery }: { searchQuery: string }) => {
 
   return (
     <section>
-      <div className="max-w-screen-xl my-10 mx-auto flex flex-col space-y-10">
-        <FilterSortBar filters={filters} setFilters={setFilters} />
-        
+      <div className="max-w-screen-xl my-10 mx-auto flex flex-col space-y-4">
+
+        <div className="relative flex sm:hidden items-center justify-between w-full">
+
+        <FilterSortBar filters={filters} setFilters={setFilters}/>
+
+        {/* Grid View Toggle for Small Screens */}
+        <div className="absolute w-full bottom-2 flex px-2 justify-end mb-4 sm:hidden">
+          <button
+            className={`p-2 text-custom-green hover:text-red-600 rounded ${gridView === "single" ? "text-red-800 bg-gray-200" : " text-custom-green"}`}
+            onClick={() => setGridView("single")}
+          >
+           
+           <BetweenHorizontalEnd size={20} />
+          </button>
+          <button
+            className={`p-2 text-custom-green hover:text-red-600 rounded ${gridView === "double" ? "text-red-800 bg-gray-200" : " text-custom-green"}`}
+            onClick={() => setGridView("double")}
+          >
+            
+            <LayoutGrid size={20} />
+          </button>
+          </div>
+        </div>
+        <div className="hidden sm:block">
+
+        <FilterSortBar  filters={filters} setFilters={setFilters} /> 
+        </div>
+    
+      
+
         {sortedProducts.length === 0 ? (
-          <div className="text-custom-green min-h-96 flex flex-col items-center justify-center gap-6">
-            <FilterX className="size-28"/>
+          <div className="text-custom-green  min-h-96 flex flex-col items-center justify-center gap-6">
+            <FilterX size={28} />
             <div className="text-xl text-center font-medium">No Product found</div>
             <button
               onClick={resetFilters}
@@ -113,22 +159,30 @@ const ShopPage = ({ searchQuery }: { searchQuery: string }) => {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div
+              className={`grid  ${
+                gridView === "double"
+                  ? "grid-cols-2  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+                  : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"
+              }`}
+            >
               {paginatedProducts.map((product) => (
                 <Link href={`/product/${product.slug}`} key={product._id} className="mx-auto">
                   <Card
                     data={{
-                      img: product.imageUrls[0] || "/placeholder.png",
-                      hoverImg: product.imageUrls[1] || product.imageUrls[0] || "/placeholder.png",
+                      img: product.imageUrls[0],
+                      hoverImg: product.imageUrls[1] || product.imageUrls[0],
                       heading: product.productName,
                       inventory: product.inventory,
                       price: product.price,
                       discountPercentage: product.discountPercentage,
                     }}
+                    isSmall={gridView === "double"}
                   />
                 </Link>
               ))}
             </div>
+            
             <PaginationComponent
               currentPage={currentPage}
               totalPages={Math.ceil(sortedProducts.length / ITEMS_PER_PAGE)}
@@ -137,7 +191,6 @@ const ShopPage = ({ searchQuery }: { searchQuery: string }) => {
           </>
         )}
       </div>
-      <Delivery />
     </section>
   );
 };

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import OrderSummary from './OrderSummary';
 import { useCart } from '@/app/context/cartContext';
 import CartItem from './CartItems';
+import { ShoppingBasket } from 'lucide-react';
 
 const CartPage = () => {
   const { cartItems, removeItem, incrementItem, decrementItem, totalPrice, totalItems } = useCart();
@@ -27,8 +28,11 @@ const CartPage = () => {
 
   if (cartItems.length === 0) {
     return (
-      <div className="text-center gap-6 min-h-80 h-full flex flex-col items-center justify-center">
-        <p className="text-3xl md:text-4xl font-semibold text-custom-green">Your cart is empty.</p>
+      <div className="text-center gap-6 h-[80vh]  flex flex-col items-center justify-center">
+      <div className='flex flex-col items-center '> 
+        <span><ShoppingBasket className='size-36 text-custom-green'/></span>
+        <p className="text-3xl md:text-4xl font-semibold text-custom-green"> Your cart is empty.</p>
+        </div> 
         <Link href="/shop" className="text-white bg-[#C25b41] rounded px-6 md:px-10 py-4 hover:hover:bg-[#9e442e]">
           Continue Shopping
         </Link>

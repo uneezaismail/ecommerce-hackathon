@@ -27,6 +27,7 @@ const PaginationComponent: React.FC<PaginationProps> = ({
         color="standard"
         shape="rounded"
         size="large"
+      
       />
     </Stack>
   );

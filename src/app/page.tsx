@@ -1,10 +1,12 @@
-import Hero from "@/components/Hero";
-import HomeContact from "@/components/HomeContact";
-import NewArrivals from "@/components/NewArrivals";
-import TopPicks from "@/components/TopPicks";
+import Hero from "@/components/Landing/Hero";
+import NewArrivals from "@/components/Landing/NewArrivals";
+import TopPicks from "@/components/Landing/TopPicks";
 import { client } from "@/sanity/lib/client";
 import { newArrivalsQuery, categoryQuery } from "@/sanity/schemaTypes/sanity_query";
-import ProductCategories, { IProduct } from "@/components/ProductCategories";
+import ProductCategories, { IProduct } from "@/components/Landing/ProductCategories";
+import Blog from "@/components/ourBlog";
+import SellingProducts from "@/components/Landing/SellingProducts";
+
 export type Category = {
   _id: string;
   category: string;
@@ -16,7 +18,7 @@ const Home = async () => {
   const newArrivals = await client.fetch(newArrivalsQuery);
   const products = await client.fetch(categoryQuery);
 
-  // Filter unique categories on the server side
+
   const uniqueCategories = Array.from(
     new Set(products.map((product: IProduct) => product.category))
   ).map((category) =>
@@ -28,9 +30,10 @@ const Home = async () => {
     <main className="flex flex-col">
       <Hero />
       <ProductCategories products={uniqueCategories} />
+      <SellingProducts/>
       <TopPicks />
       <NewArrivals product={newArrivalsProduct} />
-      <HomeContact />
+      <Blog/>
     </main>
   );
 };

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useCart } from "@/app/context/cartContext";
 import { toast } from "react-hot-toast";
-import { Productdetail } from "../../types/product";
+import { Productdetail } from "../../../types/product";
 
 export interface ProductDataProps {
   product: Productdetail;

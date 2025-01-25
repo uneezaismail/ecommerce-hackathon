@@ -48,3 +48,27 @@
     100% { transform: rotate(360deg); }
   }
   
+
+  @keyframes fade-in-top {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in-top {
+    animation: fade-in-top 1s ease-in-out forwards;
+  }
+  
+  .animate-fade-in-top.delay-200 {
+    animation-delay: 0.2s;
+  }
+  
+  .animate-fade-in-top.delay-400 {
+    animation-delay: 0.4s;
+  }
+  

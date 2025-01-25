@@ -1,5 +1,4 @@
 import Login from '@/components/Login'
-import Delivery from '@/components/ourDelivery'
 import Register from '@/components/Register'
 import React from 'react'
 
@@ -15,9 +14,6 @@ const Account = () => {
     <Register/>
 </div>
     </div>
-<div>
-    <Delivery/>
-</div>
     </section>
   )
 }

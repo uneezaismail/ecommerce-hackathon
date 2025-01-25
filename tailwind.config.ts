@@ -13,9 +13,9 @@ export default {
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
-			  'custom-gray': '#9F9F9F',
-			  'custom-light-gray': '#FAF4F4',
-			  'custom-green' : '#103A3A',
+  			'custom-gray': '#9F9F9F',
+  			'custom-light-gray': '#FAF4F4',
+  			'custom-green': '#103A3A',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
@@ -60,13 +60,34 @@ export default {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
-		  fontFamily: {
-			poppins: ['var(--font-poppins)', 'sans-serif'], 
-			playfair: [
-				'var(--font-playfair)',
-				'serif'
-			]
-		  },
+  		fontFamily: {
+  			poppins: [
+  				'var(--font-poppins)',
+  				'sans-serif'
+  			]
+  		},
+  		keyframes: {
+  			'accordion-down': {
+  				from: {
+  					height: '0'
+  				},
+  				to: {
+  					height: 'var(--radix-accordion-content-height)'
+  				}
+  			},
+  			'accordion-up': {
+  				from: {
+  					height: 'var(--radix-accordion-content-height)'
+  				},
+  				to: {
+  					height: '0'
+  				}
+  			}
+  		},
+  		animation: {
+  			'accordion-down': 'accordion-down 0.2s ease-out',
+  			'accordion-up': 'accordion-up 0.2s ease-out'
+  		}
   	}
   },
   plugins: [require("tailwindcss-animate")],

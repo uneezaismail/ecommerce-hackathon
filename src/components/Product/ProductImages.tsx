@@ -29,7 +29,7 @@ const ProductImages : React.FC<ProductImages> = ({ images } :ProductImages) => {
       </div>
 
       {/* Main Product Image */}
-      <div className="col-span-2 shadow rounded w-full h-56 sm:h-72 md:h-96 lg:w-[500px] lg:h-[500px]  flex justify-center items-center">
+      <div className="col-span-2 shadow rounded w-full h-80 sm:h-72 md:h-96 lg:w-[500px] lg:h-[500px]  flex justify-center items-center">
         <Image
           src={selectedImage}
           alt="Main Product Image"

@@ -1,6 +1,6 @@
-import ProductData from "@/components/ProductData";
+import ProductData from "@/components/Product/ProductData";
 import RelatedProducts from "@/components/RelatedProducts";
-import ProductImages from "@/components/ProductImages";
+import ProductImages from "@/components/Product/ProductImages";
 import { notFound } from "next/navigation";
 import {
   fetchProductBySlug,
@@ -19,11 +19,10 @@ const Product = async ({ params }: ProductDetailsProps) => {
     notFound();
   }
 
-  // console.log(product)
   const relatedProducts = await fetchRelatedProducts(product.category, slug);
 
   return (
-    <section className="space-y-12 py-10">
+    <section className="space-y-12 py- md:py-10">
       <div className="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-0">
         <ProductImages images={product.imageUrls} />
         <ProductData product={product} />

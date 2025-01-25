@@ -34,12 +34,12 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({ filters, setFilters }) =>
   };
 
   return (
-    <div>
+    <div className="z-50">
       {/* Small Screen Filter */}
-      <div className="block md:hidden mb-6">
+      <div className="z-50 block md:hidden mb-6">
         <button
           onClick={() => setIsFilterVisible((prev) => !prev)}
-          className="text-custom-green py-2 px-4 rounded-lg"
+          className=" text-custom-green py-2 px-4 rounded-lg"
         >
           {!isFilterVisible && (
             <div className="flex gap-2 items-center">
@@ -116,7 +116,7 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({ filters, setFilters }) =>
       </div>
 
       {/* Large Screen Filter */}
-      <div className="hidden md:flex items-center justify-between bg-white">
+      <div className="hidden md:flex items-center justify-between">
         <div className="flex items-center gap-8">
           <span className="text-sm font-medium text-gray-400">Filter:</span>
 

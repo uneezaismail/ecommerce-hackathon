@@ -1,4 +1,3 @@
-import Delivery from '@/components/ourDelivery'
 import { Clock, MapPin, Phone } from 'lucide-react'
 import React from 'react'
 
@@ -75,9 +74,7 @@ const Contact = () => {
 </form>
       </div>
       </div>
-      <div>
-        <Delivery/>
-      </div>
+
    </section>
   )
 }

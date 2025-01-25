@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Card from "./Card";
+import Card from "../Product/Card";
 import { client } from "@/sanity/lib/client";
-import { Product } from "../../types/product";
+import { Product } from "../../../types/product";
 import Link from "next/link";
 import { topPicksQuery } from "@/sanity/schemaTypes/sanity_query";
 
@@ -26,8 +26,8 @@ const TopPicks = () => {
       const data = await client.fetch(topPicksQuery);
       setTopPicks(
         data.map((item: Product) => ({
-          img: item.imageUrls[0] || "/placeholder.png",
-          hoverImg: item.imageUrls[1] || item.imageUrls[0] || "/placeholder.png",
+          img: item.imageUrls[0] ,
+          hoverImg: item.imageUrls[1] || item.imageUrls[0] ,
           heading: item.productName,
           price: item.price,
           discountPercentage: item.discountPercentage,
@@ -40,8 +40,8 @@ const TopPicks = () => {
   }, []);
 
   return (
-    <section className="w-full bg-[#e9e9e3] mx-auto py-28 px-2 md:px-0 space-y-10 md:space-y-20 flex flex-col items-center justify-center">
-      {/* Heading Section */}
+    <section className="w-full bg-[#e9e9e3] pt-16 pb-20  mx-auto  px-2 md:px-0 space-y-10 md:space-y-20 flex flex-col items-center justify-center">
+  
       <div className="flex flex-col items-center gap-y-6 text-center">
         <h2 className="text-3xl md:text-4xl text-custom-green font-bold font-poppins">
           Top Picks For You
@@ -52,24 +52,36 @@ const TopPicks = () => {
         </p>
       </div>
 
-      {/* Card Section */}
-      <div className="w-full max-w-screen-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-        {topPicks.map((item, index) => (
-          <div key={index} className=" mx-auto">
-            <Link href={`/product/${item.slug}`}>
-              <Card
-                data={{
-                  img: item.img,
-                  hoverImg: item.img,
-                  heading: item.heading,
-                  inventory: item.inventory,
-                  price: item.price,
-                  discountPercentage: item.discountPercentage,
-                }}
-              />
-            </Link>
-          </div>
-        ))}
+      <div className="w-full max-w-screen-xl">
+        <div  className="flex gap-x-20 sm:gap-x-10 lg:gap-x-6 overflow-x-scroll snap-x snap-mandatory px-4 pb-4"
+  style={{
+    scrollbarWidth: "none", 
+    msOverflowStyle: "none",
+  }}
+>
+  <div style={{ display: "none" }} />
+          {topPicks.map((item, index) => (
+            <div
+            key={index}
+            className="snap-center flex-shrink-0 w-[250px] sm:w-[300px]"
+          >
+              <Link href={`/product/${item.slug}`}>
+                <Card
+                  data={{
+                    img: item.img,
+                    hoverImg: item.img,
+                    heading: item.heading,
+                    inventory: item.inventory,
+                    price: item.price,
+                    discountPercentage: item.discountPercentage,
+                  }}
+                />
+              </Link>
+            </div>
+          ))}
+        </div>
+
+ 
       </div>
     </section>
   );

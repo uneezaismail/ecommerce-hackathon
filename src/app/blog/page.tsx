@@ -1,5 +1,5 @@
 import BlogCard from '@/components/BlogCard';
-import Delivery from '@/components/ourDelivery';
+
 import Image from 'next/image';
 import React from 'react';
 
@@ -46,7 +46,7 @@ const recentpost = [{
 
 const BlogPage: React.FC = () => {
   return (
-    <section className="space-y-10 lg:space-y-28">
+    <section className="space-y-10 py-10 lg:space-y-28">
   <div className="flex flex-col w-full lg:flex-row max-w-7xl mx-auto space-y-8 md:space-y-0">
     {/* Left Section */}
     <div className="flex-1 flex flex-col  mx-auto space-y-20  md:space-y-16 items-center justify-center">
@@ -97,14 +97,7 @@ const BlogPage: React.FC = () => {
     </div>
   </div>
 
-  {/* Pagination */}
-  <div className="flex w-fit items-center gap-x-3 md:gap-x-9 mx-auto my-16">
-    <button className="px-6 md:px-8 py-4 md:py-6 bg-[#FBEBB5] rounded-xl">1</button>
-    <button className="px-6 md:px-8 py-4 md:py-6 bg-[#FFF9E5] rounded-xl">2</button>
-    <button className="px-6 md:px-8 py-4 md:py-6 bg-[#FFF9E5] rounded-xl">3</button>
-    <button className="px-6 md:px-8 py-4 md:py-6 bg-[#FFF9E5] rounded-xl">Next</button>
-  </div>
-  <Delivery />
+
 </section>
 
   );

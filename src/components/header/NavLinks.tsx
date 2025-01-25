@@ -2,21 +2,45 @@
 import React from "react";
 import Link from "next/link";
 
-const menuItems = [
-  { name: "Home", link: "/" },
-  { name: "Shop", link: "/shop" },
-  { name: "About", link: "/" },
-  { name: "Contact", link: "/contact" },
-];
-
 const NavLinks = () => (
-  <nav className="hidden lg:flex gap-12">
-    {menuItems.map((item) => (
-      <Link key={item.name} href={item.link}
-        className="font-medium text-lg hover:text-gray-700">{item.name}
+  <ul className="flex gap-8 text-custom-green text-base font-medium">
+    <li>
+      <Link
+        href="/"
+        className="hover:underline transition"
+        aria-label="Go to Home"
+      >
+        Home
       </Link>
-    ))}
-  </nav>
+    </li>
+    <li>
+      <Link
+        href="/shop"
+        className="hover:underline transition"
+        aria-label="Go to Shop"
+      >
+        Shop
+      </Link>
+    </li>
+    <li>
+      <Link
+        href="/about"
+        className="hover:underline transition"
+        aria-label="Go to About"
+      >
+        About
+      </Link>
+    </li>
+    <li>
+      <Link
+        href="/contact"
+        className="hover:underline transition"
+        aria-label="Go to Contact"
+      >
+        Contact
+      </Link>
+    </li>
+  </ul>
 );
 
 export default NavLinks;
