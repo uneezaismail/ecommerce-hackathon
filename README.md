@@ -22,7 +22,6 @@
 - **Vercel** for hosting and deployment.
 - **Stripe** for payments.
 - **ShipEngine API** for shipment tracking.
-- **Cloudinary** for image management.
 - **Lighthouse** for performance testing.
 
 ---
