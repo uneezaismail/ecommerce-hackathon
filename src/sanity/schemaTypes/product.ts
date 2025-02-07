@@ -91,5 +91,19 @@ export const product = {
       type: 'array',
       of: [{ type: 'image' }],
     },
+    {
+      name: 'reviews',
+      title: 'Reviews',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'review' }],
+        },
+      ],
+    },
   ],
+  preview: {
+    select: { title: "productName" },
+  }
 };

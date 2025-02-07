@@ -35,7 +35,7 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({ filters, setFilters }) =>
 
   return (
     <div className="z-50">
-      {/* Small Screen Filter */}
+      
       <div className="z-50 block md:hidden mb-6">
         <button
           onClick={() => setIsFilterVisible((prev) => !prev)}
@@ -60,7 +60,7 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({ filters, setFilters }) =>
             Close
           </button>
 
-          {/* Small Screen Filters */}
+         
           <div className="mb-6">
             <h3 className="text-base font-medium mb-2">Availability</h3>
             <label className="flex items-center gap-2 text-sm">
@@ -115,12 +115,12 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({ filters, setFilters }) =>
         </div>
       </div>
 
-      {/* Large Screen Filter */}
+    
       <div className="hidden md:flex items-center justify-between">
         <div className="flex items-center gap-8">
           <span className="text-sm font-medium text-gray-400">Filter:</span>
 
-          {/* Availability Dropdown */}
+         
           <div className="relative">
             <button
               className="text-sm font-medium flex items-center gap-1"

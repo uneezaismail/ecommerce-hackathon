@@ -1,5 +1,3 @@
-// schemas/category.js
-
 export const category = {
     name: 'category',
     title: 'Category',

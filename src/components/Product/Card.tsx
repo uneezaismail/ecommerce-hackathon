@@ -42,7 +42,7 @@ const Card: React.FC<CardProps & { isSmall?: boolean }> = ({ data, isSmall }) =>
       {/* Image Container */}
       <div
         className={`relative flex items-center justify-center bg-transparent ${
-          isSmall ? "w-full bg-custom-green h-[160px]" : "w-full h-[280px] md:h-[300px]"
+          isSmall ? "w-full bg-custom-green h-[160px]" : "w-full h-[340px] md:h-[340px]"
         }`}
       >
         {/* Default Image */}
@@ -51,8 +51,9 @@ const Card: React.FC<CardProps & { isSmall?: boolean }> = ({ data, isSmall }) =>
           alt={data.heading}
           fill
           style={{ objectFit: "cover" }}
-          className="transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+          className="transition-opacity duration-300 opacity-100 "
           sizes={isSmall ? "(max-width: 768px) 50vw" : "(max-width: 768px) 100vw, 50vw"}
+          loading="lazy"
         />
 
         {/* Hover Image */}
@@ -63,6 +64,7 @@ const Card: React.FC<CardProps & { isSmall?: boolean }> = ({ data, isSmall }) =>
           style={{ objectFit: "cover" }}
           className="absolute transition-opacity duration-300 opacity-0 group-hover:opacity-100"
           sizes={isSmall ? "(max-width: 768px) 50vw" : "(max-width: 768px) 100vw, 50vw"}
+           loading="lazy"
         />
       </div>
 
@@ -83,21 +85,21 @@ const Card: React.FC<CardProps & { isSmall?: boolean }> = ({ data, isSmall }) =>
           <div className={`${isSmall ? "text-xs" : "text-sm"}`}>
             <span
               className={`line-through text-gray-600 ${
-                isSmall ? "text-xs" : "text-sm"
+                isSmall ? "text-sm" : "text-base"
               }`}
             >
               {data.price}
             </span>
             <span
               className={`font-semibold ml-2 ${
-                isSmall ? "text-xs" : "text-sm"
+                isSmall ? "text-sm" : "text-base"
               }`}
             >
               {salePrice}
             </span>
           </div>
         ) : (
-          <p className={`font-semibold ${isSmall ? "text-xs" : "text-sm"}`}>
+          <p className={`font-semibold ${isSmall ? "text-sm" : "text-base"}`}>
             {data.price}
           </p>
         )}

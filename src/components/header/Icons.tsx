@@ -3,6 +3,8 @@ import React from "react";
 import Link from "next/link";
 import CartIcon from "./CartIcon";
 import { Search, User } from "lucide-react";
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+
 
 interface IconsProps {
   setIsSearchOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -10,7 +12,7 @@ interface IconsProps {
 }
 
 const Icons: React.FC<IconsProps> = ({ setIsSearchOpen, setIsDropdownOpen }) => (
-  <div className="flex items-center gap-[6px] sm:gap-3">
+  <div className="flex items-center gap-[6px] sm:gap-4">
     <button
       onClick={() => {
         setIsSearchOpen(true);
@@ -19,16 +21,26 @@ const Icons: React.FC<IconsProps> = ({ setIsSearchOpen, setIsDropdownOpen }) => 
       className="hover:scale-110"
       aria-label="Open Search"
     >
-      <Search size={22} />
+      <Search size={22} className="md:size-6"/>
     </button>
     <Link href="/cart" aria-label="Go to Cart">
-        <CartIcon />
-      
+        <CartIcon />     
     </Link>
-    <Link href="/account" aria-label="Go to Account">
-        <User size={21} className="hover:scale-110 transition-transform" />
-     
-    </Link>
+
+        {/* <User size={21} className="hover:scale-110 md:size-6 transition-transform" /> */}
+        <SignedOut>
+            <SignInButton >
+            <User className="w-[21px] h-[21px] cursor-pointer hover:scale-110 md:size-6 transition-transform" />
+            </SignInButton>
+          </SignedOut>
+          <SignedIn>
+            <UserButton appearance={{
+    elements: {
+      avatarBox: "w-5 h-5 md:w-7 md:h-7",
+    },
+  }}/>
+          </SignedIn>
+    
   </div>
 );
 

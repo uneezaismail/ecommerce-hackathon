@@ -20,37 +20,47 @@ const ProductData: React.FC<ProductDataProps> = ({ product }) => {
     ? product.price - (product.price * product.discountPercentage) / 100
     : undefined;
 
-  const incrementQuantity = () => setQuantity((prev) => prev + 1);
+    const incrementQuantity = () => {
+      setQuantity((prev) => (prev < product.inventory ? prev + 1 : prev));
+    };
+    
   const decrementQuantity = () => {
     if (quantity > 1) {
       setQuantity((prev) => prev - 1);
     }
   };
-  console.log(product);
 
-  const finalPrice = salePrice || product.price;
+
+
+  // const finalPrice = salePrice || product.price;
 
   const isOutOfStock = product.inventory === 0;
 
   const handleAddToCart = () => {
+    if (quantity > product.inventory) {
+      toast.error(`Only ${product.inventory} items available in stock.`);
+      return;
+    }
     if (!isOutOfStock) {
       addItem({
         id: product._id as string,
         name: product.productName,
-        price: finalPrice,
+        price: product.price,
         discount: product.discountPercentage,
+        discountedPrice: salePrice || product.price,
         inventory: product.inventory,
         images: product.imageUrls[0],
         size: activeSize,
         color: activeColor,
         quantity: quantity
       });
-
+  
       toast.success(`${product.productName} added to cart`);
     } else {
       toast.error(`Sorry, this product is out of stock.`);
     }
   };
+  
 
   return (
     <>
@@ -90,11 +100,11 @@ const ProductData: React.FC<ProductDataProps> = ({ product }) => {
           <div className="flex flex-col gap-y-1 py-2 md:gap-y-2">
             <p className="font-semibold text-custom-green">Sizes:</p>
             <div className="flex gap-2">
-              {product.sizes.map((size) => (
+            {product.sizes.map((size) => (
                 <button
                   key={size}
                   onClick={() => setActiveSize(size)}
-                  className={`px-6 rounded py-2 border hover:bg-custom-green active:bg-custom-green hover:text-white border-black ${
+                  className={`px-6 rounded py-2 border hover:bg-gray-100 active:bg-custom-green active:text-white hover:text-custom-green border-custom-green ${
                     activeSize === size ? "bg-custom-green text-white" : ""
                   }`}
                 >
@@ -107,48 +117,61 @@ const ProductData: React.FC<ProductDataProps> = ({ product }) => {
           <div className="flex flex-col gap-y-1 py-2 md:gap-y-2">
             <p className="font-semibold text-custom-green">Colors:</p>
             <div className="flex gap-2">
-              {product.colors.map((color) => (
+            {product.colors.map((color) => (
                 <button
                   key={color}
                   onClick={() => setActiveColor(color)}
-                  className={`px-6 rounded py-2 border hover:bg-custom-green active:bg-custom-green hover:text-white border-black ${
+                  className={`px-6 rounded py-2 border hover:bg-custom-green active:bg-custom-green hover:text-white border-custom-green ${
                     activeColor === color ? "bg-custom-green text-white" : ""
                   }`}
                 >
                   {color}
                 </button>
               ))}
+
+
             </div>
           </div>
+          {product.inventory < 6 && product.inventory > 0 && (
+    <p className="text-red-600 text-sm">
+      Only {product.inventory} {product.inventory > 1 ? "items" : "item"} left
+    </p>
+  )}
 
           <div className="flex gap-x-4">
-            <div className="flex items-center text-custom-green gap-2 p-2 border rounded">
-              <button className="md:px-3 md:py-1" onClick={decrementQuantity}>
-                -
-              </button>
-              <span className="md:px-4 font-medium px-2 py-1">{quantity}</span>
-              <button className="md:px-3 md:py-1" onClick={incrementQuantity}>
-                +
-              </button>
-            </div>
+  <div className="flex items-center text-custom-green gap-2 p-2 border rounded">
+    <button className="md:px-3 md:py-1" onClick={decrementQuantity}>
+      -
+    </button>
+    <span className="md:px-4 font-medium px-2 py-1">{quantity}</span>
+    <button
+      className="md:px-3 md:py-1"
+      onClick={incrementQuantity}
+      disabled={quantity === product.inventory || product.inventory === 0}
+    >
+      +
+    </button>
+  </div>
 
-            <button
-              className={`md:py-4 px-6 md:px-12 w-full border font-semibold rounded relative overflow-hidden transition-all duration-300 ease-out ${
-                isOutOfStock
-                  ? "bg-gray-400 text-gray-700 cursor-not-allowed"
-                  : "bg-custom-green text-white hover:bg-emerald-950 border-black group"
-              }`}
-              onClick={handleAddToCart}
-              disabled={isOutOfStock}
-            >
-              <span className="relative z-10">
-                {isOutOfStock ? "OUT OF STOCK" : "ADD TO CART"}
-              </span>
-              {!isOutOfStock && (
-                <span className="absolute top-0 left-0 w-full h-full bg-black opacity-0 transition-all duration-500 ease-out group-hover:opacity-20 group-hover:shadow-[0_20px_50px_0_rgba(0,0,0,0.2)]"></span>
-              )}
-            </button>
-          </div>
+ 
+
+  <button
+    className={`md:py-4 px-6 md:px-12 w-full border font-semibold rounded relative overflow-hidden transition-all duration-300 ease-out ${
+      isOutOfStock
+        ? "bg-gray-400 text-gray-700 cursor-not-allowed"
+        : "bg-custom-green text-white hover:bg-emerald-950 border-black group"
+    }`}
+    onClick={handleAddToCart}
+    disabled={isOutOfStock}
+  >
+    <span className="relative z-10">
+      {isOutOfStock ? "OUT OF STOCK" : "ADD TO CART"}
+    </span>
+    {!isOutOfStock && (
+      <span className="absolute top-0 left-0 w-full h-full bg-black opacity-0 transition-all duration-500 ease-out group-hover:opacity-20 group-hover:shadow-[0_20px_50px_0_rgba(0,0,0,0.2)]"></span>
+    )}
+  </button>
+</div>
 
           <div className="flex flex-col flex-wrap gap-3 py-6">
             <h4 className="text-xl font-semibold pl-2 text-custom-green">

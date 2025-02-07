@@ -1,3 +1,4 @@
+import { CalendarCheck, TagIcon, User } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
 
@@ -8,20 +9,20 @@ type BlogCardProps = {
   title: string;
 };
 
-const BlogCard: React.FC<BlogCardProps> = ({ image,  title}) => {
+const BlogCard: React.FC<BlogCardProps> = ({ image,  title, category}) => {
   return (
     <div className="bg-white w-full px-2 md:w-[700px] lg:w-[700px] xl:w-[820px] rounded-lg space-y-4">
       {/* Blog Image */}
       <Image src={image} alt={title} width={350} height={300}  className="rounded-xl w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover" />
       
       {/* Meta Info */}
-      {/* <div className="flex items-center gap-4 mt-4 text-base  text-gray-400">
-       <div className='flex items-center gap-x-2 sm:text-base text-xs'><span><ImUser size={20} className='md:size-6'/></span><span>Admin</span></div> 
+      <div className="flex items-center gap-4 mt-4 text-base  text-gray-400">
+       <div className='flex items-center gap-x-2 sm:text-base text-xs'><span><User size={20} className='md:size-6'/></span><span>Admin</span></div> 
         <span> | </span>
-        <div className='flex items-center gap-x-2 sm:text-base text-xs'><span><IoCalendarClear size={20} className='md:size-6'/></span><span>14 Oct 2022</span></div> 
+        <div className='flex items-center gap-x-2 sm:text-base text-xs'><span><CalendarCheck size={20} className='md:size-6'/></span><span>14 Oct 2022</span></div> 
         <span> | </span>
-        <div className='flex items-center gap-x-2 sm:text-base text-xs'><span><FaTag size={20} className='md:size-6'/></span><span>{category}</span></div> 
-      </div> */}
+        <div className='flex items-center gap-x-2 sm:text-base text-xs'><span><TagIcon size={20} className='md:size-6'/></span><span>{category}</span></div> 
+      </div>
       
       {/* Blog Title */}
       <h2 className="mt-4 text-2xl sm:text-3xl font-medium">{title}</h2>

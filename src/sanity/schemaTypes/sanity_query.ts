@@ -52,6 +52,20 @@ export const shopQuery = groq`*[_type == "product"] | order(_createdAt desc) {
   }`;
 
   
+  
+  export const hotSellingQuery = groq`*[_type == "product" && "Hot Selling" in tags]{
+    _id,
+    productName,
+    price,
+    discountPercentage,
+    inventory,
+    category,
+    description,
+    "imageUrls": images[].asset->url,
+    "slug": slug.current
+  }`;
+
+  
 
  export const relatedProductsQuery = groq`
   *[_type == "product"  && slug.current != $slug][0...4]{

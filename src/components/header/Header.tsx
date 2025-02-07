@@ -11,9 +11,9 @@ import Logo from "./Logo";
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-console.log(isDropdownOpen)
+  console.log(isDropdownOpen)
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
+    <header className="bg-white border-b sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-2 md:py-4">
         <Logo/>
 

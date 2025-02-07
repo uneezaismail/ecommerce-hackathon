@@ -6,7 +6,7 @@ import Link from "next/link";
 const RelatedProducts = ({ relatedProducts }: { relatedProducts: Product[] }) => {
   return (
     <section className="py-14 px-2 mx-auto sm:px-6 md:px-8 lg:px-[20px] xl:px-[100px] space-y-6 lg:w-fit  bg-white">
-      {/* Heading Section */}
+   
       <div className="flex flex-col gap-y-3">
         <h4 className="text-3xl font-semibold font-poppins text-custom-green">You may also like</h4>
       </div>

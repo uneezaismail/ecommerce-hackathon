@@ -4,40 +4,34 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Hero = () => {
-  const slide = { url: "/sofa (1).webp", text: "High-quality Furniture Store in Pakistan" };
-
   return (
-    <section className="relative h-[75vh] md:h-screen w-full">
+    <section className="relative w-full h-[75vh] md:h-[90vh]">
+    
       <Image
-  src="/sofa.webp"
+  src="/3.avif"
   alt="Oak & Teak Logo - Home" 
   priority
   fill
   sizes="(max-width: 768px) 100vw, 50vw"
-  className=" bg-custom-green "
+  className=""
 />
-<div className="absolute inset-0  flex flex-col items-center justify-center z-20 bg-black/30">
-        
-        <h1
-          className="text-4xl max-w-[600px] sm:text-5xl font-bold text-white font-playfair opacity-0 animate-fade-in-top text-center"
-        >
-          {slide.text}
-        </h1>
 
-       
-        <p
-          className="mt-4 text-lg sm:text-xl font-bold text-gray-200 opacity-0 animate-fade-in-top delay-200 text-center px-6 max-w-3xl"
-        >
-          Redefine your space with style and comfort
-        </p>
-
-       
-        <button
-          aria-label="Shop Now"
-          className="flex items-center mt-8 px-6 py-3 border-2 border-white text-lg sm:text-xl font-semibold bg-custom-green text-white rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-lg opacity-0 animate-fade-in-top delay-400"
-        >
-       <Link href={"/shop"}> Shop Now </Link>  
-        </button>
+      
+      <div className="absolute  inset-0 flex items-center justify-end p-6 md:px-40">
+        <div className="bg-[#e9e9e3] space-y-2 lg:space-y-6 p-6 lg:p-10 lg:py-14 rounded-[6px] max-w-md lg:max-w-2xl">
+          <p className="text-sm font-semibold text-gray-600 uppercase">trending</p>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-custom-green mt-2">
+          High-quality Furniture Store in Pakistan
+          </h1>
+          <p className="text-gray-700 mt-4 md:text-lg">
+            Transform your home with stylish and high-quality furniture. Comfort meets design at Oak & Teak.
+          </p>
+          <Link href="/shop">
+            <button className="mt-6 px-6 md:px-16 py-3 md:py-4 bg-custom-green text-white font-semibold rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg">
+              Buy Now
+            </button>
+          </Link>
+        </div>
       </div>
     </section>
   );

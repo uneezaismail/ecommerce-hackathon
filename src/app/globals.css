@@ -25,7 +25,7 @@
   
 
 
-  /* Loader Container */
+ 
 .loader-container {
     display: flex;
     justify-content: center;
@@ -42,7 +42,7 @@
     animation: spin 1s linear infinite;
   }
   
-  /* Keyframes for spinner animation */
+  
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }

@@ -22,10 +22,10 @@ const NewArrivals: React.FC<NewArrivalsProps> = ({ product }) => {
         alt={product.productName}
         width={800}
         height={800}
-        className="sm:w-[70%] md:w-[60%] lg:w-[60%] xl:w-[65%] h-full xl:h-[600px]"
+        className="lg:w-[100vw] xl:w-[65%] h-[400px] xl:h-[600px]"
       />
 
-      {/* Text Section */}
+      
       <div className="gap-y-8  items-center flex flex-col">
         <div className="flex flex-col items-center">
           <p className="text-lg md:text-2xl mb-4 font-medium font-poppins">New Arrivals</p>

@@ -1,43 +1,53 @@
 "use client"
-import React, { useCallback } from 'react';
-import Link from 'next/link';
-import OrderSummary from './OrderSummary';
-import { useCart } from '@/app/context/cartContext';
-import CartItem from './CartItems';
-import { ShoppingBasket } from 'lucide-react';
+import React, { useCallback } from "react"
+import Link from "next/link"
+import OrderSummary from "./OrderSummary"
+import { useCart } from "@/app/context/cartContext"
+import { ShoppingBasket } from "lucide-react"
+import CartItem from "./CartItems"
 
 const CartPage = () => {
-  const { cartItems, removeItem, incrementItem, decrementItem, totalPrice, totalItems } = useCart();
+  const { cartItems, removeItem, incrementItem, decrementItem } = useCart()
 
-  const handleDecrement = useCallback((id:string) => {
-    decrementItem(id);
-  }, [decrementItem]);
+  const handleDecrement = useCallback(
+    (id: string) => {
+      decrementItem(id)
+    },
+    [decrementItem],
+  )
 
-  const handleIncrement = useCallback((id:string) => {
-    incrementItem(id);
-  }, [incrementItem]);
+  const handleIncrement = useCallback(
+    (id: string) => {
+      incrementItem(id)
+    },
+    [incrementItem],
+  )
 
-  const handleRemove = useCallback((id:string) => {
-    removeItem(id);
-  }, [removeItem]);
+  const handleRemove = useCallback(
+    (id: string) => {
+      removeItem(id)
+    },
+    [removeItem],
+  )
 
   const handleCheckout = () => {
- 
-    console.log('Proceed to checkout');
-  };
+    console.log("Proceed to checkout")
+  }
 
   if (cartItems.length === 0) {
     return (
-      <div className="text-center gap-6 h-[80vh]  flex flex-col items-center justify-center">
-      <div className='flex flex-col items-center '> 
-        <span><ShoppingBasket className='size-36 text-custom-green'/></span>
-        <p className="text-3xl md:text-4xl font-semibold text-custom-green"> Your cart is empty.</p>
-        </div> 
+      <div className="text-center gap-6 h-[80vh] flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center ">
+          <span>
+            <ShoppingBasket className="size-36 text-custom-green" />
+          </span>
+          <p className="text-3xl md:text-4xl font-semibold text-custom-green">Your cart is empty.</p>
+        </div>
         <Link href="/shop" className="text-white bg-[#C25b41] rounded px-6 md:px-10 py-4 hover:hover:bg-[#9e442e]">
           Continue Shopping
         </Link>
       </div>
-    );
+    )
   }
 
   return (
@@ -56,11 +66,14 @@ const CartPage = () => {
               />
             ))}
           </div>
-          <OrderSummary subtotal={totalPrice} totalItems={totalItems} onCheckout={handleCheckout} />
+          <OrderSummary           
+            onCheckout={handleCheckout}
+          />
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default CartPage;
+export default CartPage
+

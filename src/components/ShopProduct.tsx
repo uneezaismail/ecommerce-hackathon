@@ -52,22 +52,17 @@ const ShopPage = ({ searchQuery }: { searchQuery: string }) => {
   }, [fetchProducts]);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 640) {
-        setGridView("double"); 
-      } else {
-        setGridView("single");
-      }
-    };
-
-  
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    const savedGridView = localStorage.getItem("gridView") as "single" | "double";
+    if (savedGridView) {
+      setGridView(savedGridView);
+    }
   }, []);
+
+  // Function to update grid view & save to localStorage
+  const handleGridChange = (view: "single" | "double") => {
+    setGridView(view);
+    localStorage.setItem("gridView", view);
+  };
 
   const applyFilters = useMemo(() => {
     const query = (filters.search || searchQuery || "").toLowerCase();
@@ -121,22 +116,20 @@ const ShopPage = ({ searchQuery }: { searchQuery: string }) => {
 
         <FilterSortBar filters={filters} setFilters={setFilters}/>
 
-        {/* Grid View Toggle for Small Screens */}
+      
         <div className="absolute w-full bottom-2 flex px-2 justify-end mb-4 sm:hidden">
-          <button
-            className={`p-2 text-custom-green hover:text-red-600 rounded ${gridView === "single" ? "text-red-800 bg-gray-200" : " text-custom-green"}`}
-            onClick={() => setGridView("single")}
-          >
-           
-           <BetweenHorizontalEnd size={20} />
-          </button>
-          <button
-            className={`p-2 text-custom-green hover:text-red-600 rounded ${gridView === "double" ? "text-red-800 bg-gray-200" : " text-custom-green"}`}
-            onClick={() => setGridView("double")}
-          >
-            
-            <LayoutGrid size={20} />
-          </button>
+            <button
+              className={`p-2 text-custom-green hover:text-red-600 rounded ${gridView === "single" ? "text-red-800 bg-gray-200" : "text-custom-green"}`}
+              onClick={() => handleGridChange("single")}
+            >
+              <BetweenHorizontalEnd size={20} />
+            </button>
+            <button
+              className={`p-2 text-custom-green hover:text-red-600 rounded ${gridView === "double" ? "text-red-800 bg-gray-200" : "text-custom-green"}`}
+              onClick={() => handleGridChange("double")}
+            >
+              <LayoutGrid size={20} />
+            </button>
           </div>
         </div>
         <div className="hidden sm:block">

@@ -44,7 +44,7 @@ const CategoryPage = async ({ params }: ProductDetailsProps) => {
         </div>
        
       </div>
-      {/* <Delivery /> */}
+  
     </section>
   );
 };

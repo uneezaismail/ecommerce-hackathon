@@ -9,7 +9,7 @@ export interface Product {
   description?: string;
   imageUrls: string[];
   slug: string;
-  _createdAt: string; // added createdAt as a string (ISO date string)
+  _createdAt: string; 
 }
 
 
@@ -19,6 +19,7 @@ export interface Productdetail {
   productName: string;
   price: number;
   discountPercentage?: number;
+  finalPrice?: number;
   description: string;
   sizes: string[];
   material: string;

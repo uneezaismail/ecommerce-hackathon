@@ -7,7 +7,7 @@ import { Facebook, Instagram, Linkedin, Menu, Twitter } from "lucide-react";
 const menuItems = [
   { name: "Home", link: "/" },
   { name: "Shop", link: "/shop" },
-  { name: "About", link: "/Product" },
+  { name: "About", link: "/about" },
   { name: "Contact", link: "/contact" },
 ];
 
@@ -22,7 +22,7 @@ const Logo: React.FC = () => {
     <div className="flex md:hidden items-center md:gap-4">
       {/* Mobile Menu Sheet */}
       <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
-        <SheetTrigger className="lg:hidden text-gray-700 hover:bg-gray-100 rounded-md transition duration-300">
+        <SheetTrigger aria-label="menu" className="lg:hidden text-gray-700 hover:bg-gray-100 rounded-md transition duration-300">
           <Menu size={30} />
         </SheetTrigger>
 

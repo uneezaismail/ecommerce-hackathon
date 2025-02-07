@@ -7,6 +7,7 @@ import ProductCategories, { IProduct } from "@/components/Landing/ProductCategor
 import Blog from "@/components/ourBlog";
 import SellingProducts from "@/components/Landing/SellingProducts";
 
+
 export type Category = {
   _id: string;
   category: string;
@@ -17,13 +18,16 @@ export type Category = {
 const Home = async () => {
   const newArrivals = await client.fetch(newArrivalsQuery);
   const products = await client.fetch(categoryQuery);
-
-
   const uniqueCategories = Array.from(
     new Set(products.map((product: IProduct) => product.category))
-  ).map((category) =>
-    products.find((product: IProduct) => product.category === category)
-  );
+  )
+    .filter(Boolean) 
+    .map((category) =>
+      products.find((product: IProduct) => product.category === category)
+    )
+    .filter(Boolean); 
+  
+ 
   const newArrivalsProduct = newArrivals[0];
 
   return (

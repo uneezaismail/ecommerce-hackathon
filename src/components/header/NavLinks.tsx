@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 
 const NavLinks = () => (
-  <ul className="flex gap-8 text-custom-green text-base font-medium">
+  <ul className="flex gap-10 text-custom-green text-lg font-medium">
     <li>
       <Link
         href="/"
